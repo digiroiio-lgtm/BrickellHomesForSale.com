@@ -6,5 +6,5 @@ export function Diagram({kind}:{kind:'budget'|'journey'|'hoa'|'comparison'|'cons
     comparison:{title:'Compare addresses, then actual units',nodes:[['01','Daily route'],['02','Street feel'],['03','Building records'],['04','Total cost']]},
     construction:{title:'New development versus resale',nodes:[['NEW','Plans & delivery'],['NEW','Projected budget'],['RESALE','Inspect unit'],['RESALE','Current records']]}
   }[kind];
-  return <figure className="diagram"><figcaption><span className="eyebrow">THE DECISION FRAME</span><strong>{data.title}</strong></figcaption><div className="diagram-grid">{data.nodes.map(([num,label])=><div className="diagram-node" key={label}><span>{num}</span><b>{label}</b></div>)}</div><p>Editorial framework. Figures and unit-specific information must be verified independently.</p></figure>;
+  return <figure className="diagram"><figcaption><span className="eyebrow">BUYER CHECKLIST</span><strong>{data.title}</strong></figcaption><div className="diagram-grid">{data.nodes.map(([num,label])=><div className="diagram-node" key={label}><span>{num}</span><b>{label}</b></div>)}</div><p>Confirm costs, rights and availability for the specific condo before making an offer.</p></figure>;
 }
