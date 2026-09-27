@@ -41,7 +41,7 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
       form.reset();
     } else {
       setStatus('error');
-      setMessage(res?.status===503 ? 'Inquiry delivery is temporarily unavailable. Please try again later.' : 'We could not send your request. Check your details and try again.');
+      setMessage(res?.status===503 ? 'We cannot take requests right now. Please try again later.' : 'We could not send your request. Check your details and try again.');
     }
   }
 
@@ -60,14 +60,14 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
       <label>Property type <select name="property_type" required defaultValue={propertyType}><option value="condo">Condo</option><option value="luxury condo">Luxury condo</option><option value="penthouse">Penthouse</option><option value="waterfront condo">Waterfront condo</option><option value="new construction">New construction</option><option value="flexible">Flexible</option></select></label>
       <label>Preferred area / building <input name="preferred_area_building" defaultValue={building} maxLength={160} placeholder="Brickell Key, Echo Brickell…" /></label>
       <label>Timeline <select name="timeline" required defaultValue=""><option value="">Select timeline</option><option value="0-3-months">0–3 months</option><option value="3-6-months">3–6 months</option><option value="6-12-months">6–12 months</option><option value="exploring">Exploring</option></select></label>
-      <label>Payment <select name="payment" required defaultValue=""><option value="">Select payment</option><option value="cash">Cash</option><option value="mortgage">Mortgage</option><option value="undecided">Undecided</option></select></label>
+      <label>Cash or mortgage? <select name="payment" required defaultValue=""><option value="">Select one</option><option value="cash">Cash</option><option value="mortgage">Mortgage</option><option value="undecided">Undecided</option></select></label>
       <label>Name <input name="name" autoComplete="name" required maxLength={100} /></label>
       <label>Email <input name="email" type="email" autoComplete="email" required maxLength={254} /></label>
       <label>Phone / WhatsApp <input name="phone" type="tel" autoComplete="tel" required maxLength={40} /></label>
       <label>Country <input name="country" autoComplete="country-name" required maxLength={80} /></label>
       <label className="wide">Anything else? <textarea name="message" rows={3} maxLength={1000} placeholder="Must-haves, preferred buildings or questions" /></label>
       <label className="consent wide"><input name="consent" type="checkbox" value="yes" required /> I agree to be contacted about my request and have read the <Link href="/privacy/">privacy notice</Link>.</label>
-      <button className="button wide" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Get Current Brickell Listings'} <span aria-hidden="true">↗</span></button>
+      <button className="button wide" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Request Brickell condo options'} <span aria-hidden="true">↗</span></button>
       <p className="form-status wide" role="status">{status==='success'?'Your request was received. Thank you.':message}</p>
     </form>
   </section>;
