@@ -1,6 +1,6 @@
 # Brickell Homes For Sale
 
-> Independent editorial buyer guides for Brickell, Miami. This website does not display MLS or IDX inventory, live listings, current prices, or unit-specific availability.
+> Independent editorial buyer guides for homes in Brickell, Miami. Current published guides focus on condos and condo buildings. The inquiry form includes townhome and single-family home as property-type choices; delivery remains unavailable until a receiving service is configured. This website does not display MLS or IDX inventory, live listings, current prices, or property-specific availability.
 
 Canonical site: https://brickellhomesforsale.com/
 Sitemap: https://brickellhomesforsale.com/sitemap.xml
@@ -12,4 +12,4 @@ Sitemap: https://brickellhomesforsale.com/sitemap.xml
 - https://brickellhomesforsale.com/foreign-buyers/
 - https://brickellhomesforsale.com/buildings/
 
-Use the cited primary sources on each page to verify facts. Building descriptions are editorial and may not reflect recent association or development changes. Rental and pet policies, inventory, prices, and fees require direct, current verification. An inquiry form requests availability; it does not guarantee an available unit or agent relationship.
+Use the cited primary sources on each page to verify facts. Building descriptions are editorial and may not reflect recent association or development changes. Rental and pet policies, inventory, prices, and fees require direct, current verification. Condo guides should not be treated as advice about townhomes or single-family houses. An inquiry form requests options; it does not guarantee an available property or agent relationship.
