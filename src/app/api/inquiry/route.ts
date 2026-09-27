@@ -34,7 +34,12 @@ const schema = z.object({
 const attempts = new Map<string,{count:number;until:number}>();
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
-  if (origin && origin !== req.nextUrl.origin) return NextResponse.json({error:'Invalid origin'},{status:403});
+  // Proxy hosts can differ from Next's internal req.nextUrl.origin; compare the browser origin to the public Host header.
+  if (origin) {
+    let sameHost=false;
+    try { sameHost=new URL(origin).host===req.headers.get('host'); } catch { /* malformed origin */ }
+    if (!sameHost) return NextResponse.json({error:'Invalid origin'},{status:403});
+  }
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
   const now = Date.now();
   const record = attempts.get(ip);
