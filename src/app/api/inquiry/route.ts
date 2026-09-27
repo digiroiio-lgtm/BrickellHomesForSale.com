@@ -56,7 +56,8 @@ export async function POST(req: NextRequest) {
   if (submitted_after_ms<1200) return NextResponse.json({error:'Please retry your inquiry'},{status:400});
   const endpoint=process.env.LEAD_WEBHOOK_URL;
   const secret=process.env.LEAD_WEBHOOK_SECRET;
-  if (!endpoint || !secret || !endpoint.startsWith('https://')) return NextResponse.json({error:'Inquiry delivery unavailable'},{status:503});
+  const privacyDetails = ['NEXT_PUBLIC_SITE_OPERATOR_NAME','NEXT_PUBLIC_PRIVACY_CONTACT_EMAIL','NEXT_PUBLIC_LEAD_RECIPIENT_NAME','NEXT_PUBLIC_LEAD_RETENTION_PERIOD'];
+  if (!endpoint || !secret || !endpoint.startsWith('https://') || privacyDetails.some(key=>!process.env[key]?.trim())) return NextResponse.json({error:'Inquiry delivery unavailable'},{status:503});
   const payload=JSON.stringify({id:randomUUID(),received_at:new Date().toISOString(),...lead});
   const signature=createHmac('sha256',secret).update(payload).digest('hex');
   try {
