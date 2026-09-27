@@ -32,6 +32,7 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
     const data = Object.fromEntries(new FormData(form).entries());
     data.submitted_after_ms = String(Date.now()-startedAt.current);
     data.landing_page = window.location.pathname;
+    data.budget_segment = String(data.budget);
     const res = await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>null);
     if (res?.ok) {
       event('form_submit',{intent,landing_page:window.location.pathname});
