@@ -46,7 +46,7 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
   }
 
   return <section id="inquiry" className="inquiry wrap" aria-labelledby="inquiry-title">
-    <div className="inquiry-intro"><span className="eyebrow">YOUR NEXT MOVE</span><h2 id="inquiry-title">Request current Brickell availability.</h2><p>Tell us what matters. Your request can be matched against current opportunities by a local partner once the service is connected. This page does not display live inventory.</p><span className="micro">No obligation. We will only use your details to respond to this inquiry as described in our privacy notice.</span></div>
+    <div className="inquiry-intro"><span className="eyebrow">YOUR NEXT MOVE</span><h2 id="inquiry-title">Get current Brickell condo options.</h2><p>Share your budget, preferred buildings and must-haves. Request a shortlist of current Brickell condos matched to your criteria.</p><span className="micro">No obligation. This site does not display live listings. Availability is confirmed before any options are shared. We use your details as described in our privacy notice.</span></div>
     <form onSubmit={submit} onFocus={()=>{if(!started){setStarted(true);event('form_start',{intent,landing_page:window.location.pathname});}}} className="form-grid">
       <input type="hidden" name="lead_source" value="brickellhomesforsale.com" />
       <input type="hidden" name="landing_page" value="/" />
