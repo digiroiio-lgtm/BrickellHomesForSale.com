@@ -1,8 +1,8 @@
 export const site = {
   name: 'Brickell Homes For Sale',
   origin: 'https://brickellhomesforsale.com',
-  description: 'Independent Brickell condo buyer guides. Compare neighborhoods, budgets and ownership costs, then request current availability from a qualified local partner.',
-  disclosure: 'This is an editorial buyer inquiry site, not an MLS or live listing feed. Current availability and matching properties can be requested through our buyer inquiry form.'
+  description: 'Compare Brickell condo budgets, buildings, HOA fees and buying costs. Request current options based on your criteria.',
+  disclosure: 'This site offers buyer guides, not a live MLS feed. It does not display current unit listings or prices. Use the inquiry form to request options for your criteria.'
 };
 
 export const buyerSources = {
