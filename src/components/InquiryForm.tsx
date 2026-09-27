@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { event } from './Analytics';
+import { buildingBySlug } from '@/lib/buildings';
 
 type Props = { intent:string; budget?:string; propertyType?:string; building?:string };
 const utmKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'] as const;
@@ -11,6 +12,7 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
   const [utm,setUtm] = useState<Record<string,string>>({});
   const [status,setStatus] = useState<'idle'|'sending'|'success'|'error'>('idle');
   const [message,setMessage] = useState('');
+  const [preferredBuilding,setPreferredBuilding] = useState(building);
   const [started,setStarted] = useState(false);
   const startedAt = useRef(Date.now());
   useEffect(()=>{
@@ -22,8 +24,22 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
       saved[key] = (value || sessionStorage.getItem(key) || '').slice(0,200);
     }
     setUtm(saved);
+    if (intent==='building-index') {
+      const syncSelection = () => {
+        const selected = new URLSearchParams(window.location.search).get('building');
+        setPreferredBuilding(selected && buildingBySlug[selected] ? buildingBySlug[selected].name : '');
+      };
+      const onSelection = (e:Event) => setPreferredBuilding((e as CustomEvent<string>).detail);
+      syncSelection();
+      window.addEventListener('popstate',syncSelection);
+      window.addEventListener('building-selected',onSelection);
+      return () => {
+        window.removeEventListener('popstate',syncSelection);
+        window.removeEventListener('building-selected',onSelection);
+      };
+    }
     startedAt.current = Date.now();
-  },[]);
+  },[intent]);
 
   async function submit(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -58,7 +74,7 @@ export function InquiryForm({intent,budget='',propertyType='condo',building=''}:
       <label>Budget <select name="budget" defaultValue={budget} required><option value="">Select budget</option><option value="under-1m">Under $1M</option><option value="1m-2m">$1M–$2M</option><option value="2m-plus">$2M+</option><option value="flexible">Flexible / exploring</option></select></label>
       <label>Beds <select name="beds" required defaultValue=""><option value="">Select bedrooms</option><option value="studio">Studio</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4-plus">4+</option><option value="flexible">Flexible</option></select></label>
       <label>Property type <select name="property_type" required defaultValue={propertyType}><option value="condo">Condo</option><option value="luxury condo">Luxury condo</option><option value="penthouse">Penthouse</option><option value="waterfront condo">Waterfront condo</option><option value="new construction">New construction</option><option value="flexible">Flexible</option></select></label>
-      <label>Preferred area / building <input name="preferred_area_building" defaultValue={building} maxLength={160} placeholder="Brickell Key, Echo Brickell…" /></label>
+      <label>Preferred area / building <input name="preferred_area_building" value={preferredBuilding} onChange={e=>setPreferredBuilding(e.target.value)} maxLength={160} placeholder="Brickell Key, Echo Brickell…" /></label>
       <label>Timeline <select name="timeline" required defaultValue=""><option value="">Select timeline</option><option value="0-3-months">0–3 months</option><option value="3-6-months">3–6 months</option><option value="6-12-months">6–12 months</option><option value="exploring">Exploring</option></select></label>
       <label>Payment <select name="payment" required defaultValue=""><option value="">Select payment</option><option value="cash">Cash</option><option value="mortgage">Mortgage</option><option value="undecided">Undecided</option></select></label>
       <label>Name <input name="name" autoComplete="name" required maxLength={100} /></label>
