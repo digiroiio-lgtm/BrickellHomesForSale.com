@@ -1,6 +1,6 @@
 # Brickell Homes For Sale
 
-An MLS/IDX-free editorial buyer acquisition site built with Next.js 15, React 19 and TypeScript. The repository began empty; the default branch was initialized with a README, and this implementation lives on `feat/brickell-buyer-engine` for review.
+An MLS/IDX-free Brickell home-buyer acquisition site built with Next.js 15, React 19 and TypeScript. The current editorial library focuses on condos and condo buildings; the site-level brand and inquiry form also accommodate buyers seeking a townhome or single-family home. The repository began empty and the initial implementation was reviewed in `feat/brickell-buyer-engine`.
 
 ## Implementation plan and status
 
