@@ -11,7 +11,7 @@ export type Guide = {
   context: string;
   checks: string[];
   decision: string;
-  sourceKeys?: ('condo' | 'tax' | 'law' | 'flood')[];
+  sourceKeys?: (keyof typeof import('./site').buyerSources)[];
 };
 
 // Editorial criteria, not search results or representations of current inventory.
