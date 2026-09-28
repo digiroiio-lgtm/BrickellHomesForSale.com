@@ -1,6 +1,6 @@
 # Brickell Homes For Sale
 
-The approved next-stage SEO/GEO architecture is documented in [the transaction-intent graph](docs/transaction-intent-graph.md). It defines the Core → Price → Buildings → Bedroom/Features → New Construction → Investor rollout and publication gates for future licensed inventory-backed Money Pages. The current site remains an MLS-free editorial buyer resource until a permitted inventory source is connected.
+The approved next-stage SEO/GEO architecture is documented in [the transaction-intent graph](docs/transaction-intent-graph.md). It defines the Core → Price → Buildings → Bedroom/Features → New Construction → Investor rollout and publication gates for distinct editorial Money Pages. This phase remains MLS-free; licensed inventory is a separate future option.
 
 An MLS/IDX-free editorial buyer acquisition site built with Next.js 15, React 19 and TypeScript. The repository began empty; the default branch was initialized with a README, and this implementation lives on `feat/brickell-buyer-engine` for review.
 
