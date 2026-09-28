@@ -6,7 +6,7 @@ import { StructuredData } from '@/lib/seo';
 import { site } from '@/lib/site';
 import './globals.css';
 
-export const metadata:Metadata={metadataBase:new URL(site.origin),title:{default:'Brickell Homes For Sale | Buyer Guides & Current Availability',template:'%s | Brickell Homes For Sale'},description:site.description,robots:{index:true,follow:true},verification:{google:process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined}};
+export const metadata:Metadata={metadataBase:new URL(site.origin),title:{default:'Brickell Homes For Sale | Independent Buyer Guides',template:'%s | Brickell Homes For Sale'},description:site.description,verification:{google:process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined}};
 
 export default function RootLayout({children}:{children:React.ReactNode}) {
   const email=process.env.NEXT_PUBLIC_CONTACT_EMAIL;
