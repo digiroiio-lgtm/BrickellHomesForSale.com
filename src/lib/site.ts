@@ -1,8 +1,8 @@
 export const site = {
   name: 'Brickell Homes For Sale',
   origin: 'https://brickellhomesforsale.com',
-  description: 'Explore Brickell homes for sale by property type, area and building. Compare condos, waterfront and luxury residences, penthouses and new construction with independent buyer guides.',
-  disclosure: 'This is an editorial buyer inquiry site, not an MLS or live listing feed. Current availability and matching properties can be requested through our buyer inquiry form.'
+  description: 'Independent buyer intelligence for Brickell homes and residences in Miami, Florida. Compare property types, submarkets, buildings, total ownership costs and purchase decisions.',
+  disclosure: 'Independent editorial buyer research and inquiry site. No MLS feed, live listings, prices or unit availability are displayed; request options matched to your brief.'
 };
 
 export const buyerSources = {
@@ -11,5 +11,6 @@ export const buyerSources = {
   law: { label: 'Florida Statutes (2026), condominium resale disclosures', url: 'https://www.flsenate.gov/Laws/Statutes/2026/718.503' },
   flood: { label: 'FEMA Flood Map Service Center', url: 'https://msc.fema.gov/portal/home' },
   cfpb: { label: 'CFPB homebuying and Loan Estimate resources', url: 'https://www.consumerfinance.gov/owning-a-home/' },
-  fannie: { label: 'Fannie Mae condominium project standards', url: 'https://selling-guide.fanniemae.com/sel/b4-2.1-01/general-information-project-standards' }
+  fannie: { label: 'Fannie Mae condominium project standards', url: 'https://selling-guide.fanniemae.com/sel/b4-2.1-01/general-information-project-standards' },
+  dda: { label: 'Miami Downtown Development Authority, district maps', url: 'https://www.miamidda.com/Business-Development/Data-Research/Maps' }
 };

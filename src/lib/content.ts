@@ -1,3 +1,4 @@
+import { residentialGuides } from './residential-content';
 export type Guide = {
   slug: string;
   title: string;
@@ -9,11 +10,11 @@ export type Guide = {
   lead: string;
   checks: string[];
   decision: string;
-  sourceKeys?: ('condo' | 'tax' | 'law' | 'flood' | 'cfpb' | 'fannie')[];
+  sourceKeys?: ('condo' | 'tax' | 'law' | 'flood' | 'cfpb' | 'fannie' | 'dda')[];
 };
 
 // Editorial criteria, not search results or representations of current inventory.
-export const guides: Guide[] = [
+const existingGuides: Guide[] = [
   { slug:'condos-for-sale', title:'Brickell condos for sale: a buyer’s starting point', eyebrow:'Start here', description:'Choose the location, ownership costs and building profile that fit before requesting current inventory.', intent:'condos', budget:'any', type:'condo', lead:'Tell us what a useful shortlist would include.', checks:['Separate Brickell Key, the bayfront, Brickell Avenue and the City Centre area by daily routine.','Compare all-in monthly cost, including association fees, taxes and insurance, rather than purchase price alone.','Request the current budget, reserves, special assessment and inspection records for each building before committing.'], decision:'The right shortlist starts with your budget, bedroom need and timeline. Public search results can be stale, so ask for availability that has been checked for your criteria.', sourceKeys:['condo','tax'] },
   { slug:'brickell-condos-under-1m', title:'Brickell condos under $1M: a realistic search framework', eyebrow:'Budget guide', description:'Use a sub-$1M ceiling to screen ownership costs, building condition and tradeoffs before seeing matched units.', intent:'under-1m', budget:'under-1m', type:'condo', lead:'Set your maximum budget and tell us which tradeoffs are acceptable.', checks:['Keep a reserve below the purchase ceiling for closing costs and post-close expenses.','A lower price does not imply a lower total monthly cost; ask for actual current assessments.','Decide whether size, parking, views, walkability or building age can move.'], decision:'A price cap is a search filter, not a promise that any specific building has an eligible unit today.', sourceKeys:['condo','tax'] },
   { slug:'brickell-condos-1m-2m', title:'Brickell condos from $1M to $2M', eyebrow:'Budget guide', description:'Compare layout, location and ongoing costs across Brickell’s mid-to-upper condo budget.', intent:'1m-2m', budget:'1m-2m', type:'condo', lead:'Describe the layout and building feel you want in the $1M–$2M range.', checks:['Compare floor plans by usable space and exposure, not bedroom labels alone.','Check whether parking, storage or other rights transfer with a unit.','Review current association finances and any planned capital work.'], decision:'Two homes in the same price band can have very different carrying costs and rules; request unit-specific documents before comparing value.', sourceKeys:['condo'] },
@@ -49,5 +50,7 @@ export const guides: Guide[] = [
   { slug:'brickell-condo-mortgage-requirements', title:'Brickell condo mortgage requirements: buyer and building', eyebrow:'Mortgage guide', description:'Understand borrower preapproval, condo project review, insurance and cash-to-close questions.', intent:'mortgage-requirements', budget:'any', type:'condo', lead:'Speak with a lender about both your financial profile and the specific project.', checks:['Request a Loan Estimate for your financing scenario.','Ask the lender which project documents and insurance information it needs.','Verify whether reserves, repairs or litigation affect the selected loan program.'], decision:'Borrower preapproval alone does not confirm that a specific condo project meets a lender’s requirements.', sourceKeys:['cfpb','fannie'] },
   { slug:'cash-vs-financing-brickell-condo', title:'Cash vs financing a Brickell condo', eyebrow:'Funding comparison', description:'Compare liquidity, cash to close, financing costs and project eligibility before choosing a funding path.', intent:'cash-vs-financing', budget:'any', type:'condo', lead:'Compare written numbers for your actual purchase rather than a general rate example.', checks:['For financing, compare Loan Estimates and total ownership cost.','For cash, preserve a reserve for closing, taxes, insurance and potential assessments.','Ask counsel and your closing agent about the contract and timing implications of each route.'], decision:'Cash can remove lender project review from a transaction, but it does not replace building due diligence or legal review.', sourceKeys:['cfpb','condo'] }
 ];
+
+export const guides: Guide[] = [...existingGuides, ...residentialGuides];
 
 export const guideBySlug = Object.fromEntries(guides.map(g => [g.slug, g])) as Record<string, Guide>;
