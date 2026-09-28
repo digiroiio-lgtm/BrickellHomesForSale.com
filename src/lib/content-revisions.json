@@ -1,0 +1,326 @@
+{
+  "/": {
+    "date": "2026-09-28",
+    "hash": "ca68e77c3a17d89b9061043979ac13a6db67e6a280e92b45006afd84e5e0f233"
+  },
+  "/buildings/": {
+    "date": "2026-09-28",
+    "hash": "31f0f79d478075057fd52271fb4f8fa897e1a918fa357414d84c97c3af33b38d"
+  },
+  "/buyer-guides/": {
+    "date": "2026-09-28",
+    "hash": "ac9b929f8845d6d5bde2bb62b17688be30178b1f353193852e95a7feabf8cfa0"
+  },
+  "/about/": {
+    "date": "2026-09-28",
+    "hash": "4005b063beb190473ae6387ac12660f124a40df88cb1534b7ca9298983875424"
+  },
+  "/methodology/": {
+    "date": "2026-09-28",
+    "hash": "0228e7f083b1e621a66ce510525c14752ae9cfe7c1a28e4496c487aeb37e42f8"
+  },
+  "/editorial-standards/": {
+    "date": "2026-09-28",
+    "hash": "3b1ce7ce00acaf83cf5a23f095976f79cf6a722eec318aae3f8f4113adb058bb"
+  },
+  "/disclosures/": {
+    "date": "2026-09-28",
+    "hash": "46fd0d492ff12112ea3a41a661d3ffebed8cf9cc60c9560b60f521e7e9e06ea8"
+  },
+  "/privacy/": {
+    "date": "2026-09-28",
+    "hash": "8f1c57dfa7848ab1909c529fa1d45009de9af64516172a7cec96cf1d46024840"
+  },
+  "/condos-for-sale/": {
+    "date": "2026-09-28",
+    "hash": "856a9abf87dc649e5ead5912cc9638cf9739ed8e382469cba148a853a25f6a0a"
+  },
+  "/brickell-condos-under-1m/": {
+    "date": "2026-09-27",
+    "hash": "e3cd96afc113ca51b315e351beb19248e4685e0cb3b52f07546fcbdf4d5ecf03"
+  },
+  "/brickell-condos-1m-2m/": {
+    "date": "2026-09-27",
+    "hash": "0093e62fec0dbb6d09439c2c59af94d8586dca9e8e148692b2890f4761e9c4b7"
+  },
+  "/luxury-condos/": {
+    "date": "2026-09-28",
+    "hash": "7b7008489b15e4affd22de307bcdb85af801f211ea2628132d6da858875be22f"
+  },
+  "/penthouses/": {
+    "date": "2026-09-28",
+    "hash": "437acf8c29c039b6532a8dbb4f83dcb088a3cf5b3eea264a659f0c2020aa8c36"
+  },
+  "/waterfront-condos/": {
+    "date": "2026-09-28",
+    "hash": "5812c92720fe40dca6191a8a0fe8c52b6de2170b364c1410453ec7f95b2a6303"
+  },
+  "/new-construction/": {
+    "date": "2026-09-28",
+    "hash": "f355f954bc2c9075451b706481e96cdddaf3c0cf614b970050704809a50bef35"
+  },
+  "/brickell-key/": {
+    "date": "2026-09-28",
+    "hash": "33a394fe4ec28b149b6256f71adb3611cf3efd1842874c305d5b5fa60ef3b93f"
+  },
+  "/brickell-avenue/": {
+    "date": "2026-09-28",
+    "hash": "5572a4f74da556193dca4f57877994d1ff861d59cd807fa2bcf9390e3ee17c88"
+  },
+  "/foreign-buyers/": {
+    "date": "2026-09-27",
+    "hash": "6a7efcd57c456706ed90bb22e2ad8c6eadae2d9c66c279cea124a507e4180d2c"
+  },
+  "/hoa-fees/": {
+    "date": "2026-09-27",
+    "hash": "9c840ee0d6a7c0648161c678e53745cf2cc9c95b0294ba934c201b889f7af50f"
+  },
+  "/property-taxes/": {
+    "date": "2026-09-27",
+    "hash": "67649ade48ab6a92a7b58101b2fd5dcd2a1ff4cd50f3ae2cf8b0df96dd4b33c8"
+  },
+  "/closing-costs/": {
+    "date": "2026-09-27",
+    "hash": "ca73d74db553f919720662090995a7fae475b66d6bb590dc11130a141950c079"
+  },
+  "/financing/": {
+    "date": "2026-09-27",
+    "hash": "d0f3e29e11db30b7218963a0d96f06da48790e1e5eb8e62211f157378cd7e801"
+  },
+  "/brickell-vs-downtown-miami/": {
+    "date": "2026-09-28",
+    "hash": "87264b8448f22890afebce0e7ec846216faa70ef629a8e161113d288d826f62c"
+  },
+  "/best-condos-in-brickell/": {
+    "date": "2026-09-27",
+    "hash": "b53c65bd0746cf52dc4c4f960f1162553319942ef0dc75f0bb13a46b3fb34d3e"
+  },
+  "/buying-a-condo-in-brickell/": {
+    "date": "2026-09-27",
+    "hash": "d6dd2644c5abe1864189882c21daff9f3f6174775a3a9475f2f3deb1b75c7ac3"
+  },
+  "/brickell-key-vs-brickell/": {
+    "date": "2026-09-28",
+    "hash": "4d0540a1f85d5240b594392cf1e64e1ff6a4878204806538da55bea2904256f5"
+  },
+  "/brickell-condos-2m-plus/": {
+    "date": "2026-09-27",
+    "hash": "939f58a320d5dbdb87553462a89d3d45d0b7a228cb4ecc28d8b876a6f937ce4c"
+  },
+  "/condo-reserves/": {
+    "date": "2026-09-27",
+    "hash": "b8a0a3a885c6c449bcd97fa360b0351dc20d0677de676f78781ef402c7f8b653"
+  },
+  "/condo-inspections/": {
+    "date": "2026-09-27",
+    "hash": "7c3923e400d14ab55053496d0df7fd7ae66880ef32fb32fc5dac2b8736eab3d5"
+  },
+  "/condo-insurance/": {
+    "date": "2026-09-27",
+    "hash": "655a036dbed780ff18275cd50adb8da21763644995fecb7b66b71ef8109c7bf6"
+  },
+  "/condo-documents/": {
+    "date": "2026-09-27",
+    "hash": "8129180a5df97b80161848313f745dc455bbbbe4456037cbfe17084900db9401"
+  },
+  "/brickell-commute/": {
+    "date": "2026-09-27",
+    "hash": "e11dbd1d64e3359c43be1d4cef5b6d52dca4867e7b3d7e3617b52f57fa4c47a0"
+  },
+  "/first-time-condo-buyer/": {
+    "date": "2026-09-27",
+    "hash": "ed1b615a2a7a8ce235ecbdfdfca108fede80c219d20c811c3023104ee299675d"
+  },
+  "/brickell-condo-investment/": {
+    "date": "2026-09-27",
+    "hash": "0739031ca67e9e33f4a655810671fcdd3f27d123ff04f207352fd87e6c1b03af"
+  },
+  "/new-construction-vs-resale/": {
+    "date": "2026-09-28",
+    "hash": "da538132caa104f96574dd8b88f86015d8b15e67a6f1c7d10e37f50c72ab930a"
+  },
+  "/brickell-condo-closing-process/": {
+    "date": "2026-09-28",
+    "hash": "12fcf1868d2d735c8126ac0c9403bf7fd2e5290bda09d1d6e661b056d3445ba4"
+  },
+  "/brickell-condo-special-assessments/": {
+    "date": "2026-09-28",
+    "hash": "5de3e4675593f8f238f97c2db6d037462673c23382164cec242011afc4b8852f"
+  },
+  "/brickell-condo-rental-restrictions/": {
+    "date": "2026-09-28",
+    "hash": "f8971a2f175f391690609839090f503e8ffa22c33351b83c3ab9f119ee7706ee"
+  },
+  "/brickell-condo-pet-rules/": {
+    "date": "2026-09-28",
+    "hash": "6a4afab43cb3726d3926133ae3a2e7c755dec384d3ba1632aa4886d78a988bb1"
+  },
+  "/brickell-condo-application-approval/": {
+    "date": "2026-09-28",
+    "hash": "f6e0290f2270c267c710ded008b0542ba6745886300038489ea6a99243408a79"
+  },
+  "/brickell-condo-mortgage-requirements/": {
+    "date": "2026-09-28",
+    "hash": "acd6b1d5581d032669adbb980e38b9d41e92a803c470535d0b48a19f7970b75e"
+  },
+  "/cash-vs-financing-brickell-condo/": {
+    "date": "2026-09-28",
+    "hash": "52494dec8be814f88e3ace44352fd430709eea50fc7b3f8c3e466f1b21ab6f6e"
+  },
+  "/branded-residences/": {
+    "date": "2026-09-28",
+    "hash": "6f53b02dde1750e53dcfe7b9c13d6864829e53a06374c9186d6b6821cc7fd5b8"
+  },
+  "/high-rise-residences/": {
+    "date": "2026-09-28",
+    "hash": "0b5fb301499e0901aed7309daed74089d2224991d9df8c712959c209d7a69026"
+  },
+  "/resale-properties/": {
+    "date": "2026-09-28",
+    "hash": "27d16dd75c480c6f3e5ed3dc7b9b6aa85acc2d707386276aa8f7b1c7a66ca321"
+  },
+  "/pre-construction/": {
+    "date": "2026-09-28",
+    "hash": "7f7a7364ff05f4fc3da3c5783d1672a87f67b3018f112257a3c287b136c8580f"
+  },
+  "/primary-residence-brickell/": {
+    "date": "2026-09-28",
+    "hash": "0f0eef78a69235f095e85643e9cff06f239862cab7b8940fcd78f773f735904a"
+  },
+  "/second-home-brickell/": {
+    "date": "2026-09-28",
+    "hash": "461caf428414f598c61bb21792954135e5a4aac51524f0acce85eb48591dda08"
+  },
+  "/investment-properties-brickell/": {
+    "date": "2026-09-28",
+    "hash": "dea9b96a7ac378fe529201709a915e3d895d77f9db464941efa948ab1848cb6f"
+  },
+  "/brickell-core/": {
+    "date": "2026-09-28",
+    "hash": "ac2f4b0f3203ad51eec15186a6ed53b4fceb37a3a4a3f9f867e1dcf9139d5a62"
+  },
+  "/south-brickell/": {
+    "date": "2026-09-28",
+    "hash": "2c2719d5bd044bbdabeaeab5100512c7cf5c223f47745ae322d6aee7073b5c05"
+  },
+  "/brickell-bay-drive/": {
+    "date": "2026-09-28",
+    "hash": "2c7466f3a46f10070fbb65f413494f833e927c0cd6577a7c5a5f99da72b154d0"
+  },
+  "/north-brickell-miami-river/": {
+    "date": "2026-09-28",
+    "hash": "886e7c78782912f635bb194d1123d4fa35d132462485a3a46e9596f73e645068"
+  },
+  "/waterfront-vs-inland-brickell/": {
+    "date": "2026-09-28",
+    "hash": "b8f77f6a0a67060ba6c844d73be7273310937ef676e6ade185b33a0716377c5e"
+  },
+  "/condo-vs-branded-residence/": {
+    "date": "2026-09-28",
+    "hash": "e5a5d187c54c57388d3d21eada43a7bf1b13dc89a5db6c41bf19696b86eb0144"
+  },
+  "/buying-a-home-in-brickell/": {
+    "date": "2026-09-28",
+    "hash": "2e275fc21d7d8924f4e48f23615340f27c8a2074c9db3612a0e99c244dfab40c"
+  },
+  "/pre-construction-buying-process/": {
+    "date": "2026-09-28",
+    "hash": "ff245fb67f99dc13f4686e700f001a13737ee2b637a89fddbfd97fadc787e69a"
+  },
+  "/ownership-costs/": {
+    "date": "2026-09-28",
+    "hash": "cbc3a3e02ceb9ea11181ef6e38f927df9fddd63d1c5924f5774e6479b3801744"
+  },
+  "/buildings/reach-brickell-city-centre/": {
+    "date": "2026-09-28",
+    "hash": "85babc04f7829d36a6e1ee1e5cdd57b53fdd2072a80ee788532d1a525bb760d8"
+  },
+  "/buildings/rise-brickell-city-centre/": {
+    "date": "2026-09-28",
+    "hash": "0f38d0dcc3286a75ac4271ede2d6cc6b53bf51fc4c888b5caff66e5bf8b922d4"
+  },
+  "/buildings/brickell-key-one/": {
+    "date": "2026-09-28",
+    "hash": "2c4f2984da3102b3520111b40e89f5818ab6696f0ab6b21a7d070970a7cbb170"
+  },
+  "/buildings/courts-brickell-key/": {
+    "date": "2026-09-28",
+    "hash": "d29a02e48e9985e0a53ba00407145e1d4219c237082cb431f919a583696dbf56"
+  },
+  "/buildings/courvoisier-courts/": {
+    "date": "2026-09-28",
+    "hash": "171bae4b7dbfa350b1e45cde5fad2d354aa9cf11590e94c4c13bf47adde6bd84"
+  },
+  "/buildings/one-tequesta-point/": {
+    "date": "2026-09-28",
+    "hash": "f2233a151e26eca6c1888c79e3a73ee02a1abef1d555a4950dd8d12f6a28f52f"
+  },
+  "/buildings/500-brickell/": {
+    "date": "2026-09-28",
+    "hash": "9360a369a765023d56bb4eb916e48715567dd0389409a71922bc29784aeb42a5"
+  },
+  "/buildings/residences-at-1428-brickell/": {
+    "date": "2026-09-28",
+    "hash": "1cdf3bf759b6d82e794774db7c10cbea356339775698cf5b52afeaed4e66c86f"
+  },
+  "/buildings/st-regis-residences-miami/": {
+    "date": "2026-09-28",
+    "hash": "b784712e06ec352a735f572079bfa1d793a2a38fa9b8e9fd1d5b9665196f5340"
+  },
+  "/buildings/mercedes-benz-places-miami/": {
+    "date": "2026-09-28",
+    "hash": "fb536d38cb50daaa5bfc22c0fdf7cc551f51b9a3cd7bfebf221e3f0722f65a78"
+  },
+  "/buildings/2200-brickell/": {
+    "date": "2026-09-28",
+    "hash": "67475fe60defca03779b19f8f3544fa2a7be734876316f2df5cc682fa42262ab"
+  },
+  "/buildings/mandarin-oriental-residences-miami/": {
+    "date": "2026-09-28",
+    "hash": "bd65e9374234a4e05ec71529ae18bdceaedf3b0bcb031547fec4e88989110489"
+  },
+  "/buildings/icon-brickell/": {
+    "date": "2026-09-28",
+    "hash": "de83a40aa653f9154d8eda3f9428e5bd3067977d21356c0b28402a16c9d2dc53"
+  },
+  "/buildings/millecento-1100/": {
+    "date": "2026-09-28",
+    "hash": "fa09c40af2642c01fd31d4968f1a06b29fd6558f13f3c8d3c812c635f3b5888a"
+  },
+  "/buildings/brickell-heights/": {
+    "date": "2026-09-28",
+    "hash": "13ebfb3f67bda3116c4097a09890a3fe6fcb00f13fc145629ebb733249bb6044"
+  },
+  "/buildings/echo-brickell/": {
+    "date": "2026-09-28",
+    "hash": "284465e600f5a1d3c34fa7dec5e3532ededd4b4970a3866da545be10729a42ae"
+  },
+  "/buildings/brickell-flatiron/": {
+    "date": "2026-09-28",
+    "hash": "7290d5a4dedf3338ce4f1b2a4c5cfb7df9487fe2ea9d565fabf463cf78202d98"
+  },
+  "/buildings/sls-lux/": {
+    "date": "2026-09-28",
+    "hash": "99e6861990b66a184aaedd74acc7cfa516b5a53e9c6b174cabc0e0dc308c111a"
+  },
+  "/buildings/four-seasons-residences/": {
+    "date": "2026-09-28",
+    "hash": "aa8a99a5284b396647f5c3414a3508018858a6d8f33615e14cacf2d38c1ab8cf"
+  },
+  "/buildings/una-residences/": {
+    "date": "2026-09-28",
+    "hash": "2fb29718240c68e96bc50b51a492adc5291996ba8c1d01e25eee669a714a8707"
+  },
+  "/buildings/cipriani-residences-miami/": {
+    "date": "2026-09-28",
+    "hash": "5f23751102d111611eb56871c07468513ad0515108bc667b48a23f76c151cf4f"
+  },
+  "/buildings/viceroy-brickell/": {
+    "date": "2026-09-28",
+    "hash": "2161e2625d14b0bbe0f8b14a22e0c2c1928f89766f17b81e397f8a7703bf6415"
+  },
+  "/buildings/baccarat-residences-miami/": {
+    "date": "2026-09-28",
+    "hash": "9a3fa65b2c39a394c446f7a2daa625cd0d9a615e9f7573fc6a932dd9230c6e6b"
+  }
+}

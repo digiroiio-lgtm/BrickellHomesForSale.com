@@ -20,6 +20,10 @@ npm run typecheck
 npm run build
 ```
 
+### Editorial revision dates
+
+`src/lib/content-revisions.json` stores the last substantive editorial change date and a content fingerprint for each indexable page. `npm run build` checks these fingerprints before generating `sitemap.xml`; ordinary deploys leave `lastmod` unchanged. After a substantive content edit, review the affected page and run `node scripts/content-revisions.cjs --snapshot --date=YYYY-MM-DD` with the actual edit date, then review the manifest diff before committing. A template or navigation edit does not automatically rewrite every guide's date. The home and index entries also track their displayed page text and linked guide/building summaries.
+
 The `.env.example` file lists all optional and required integration values. Production form delivery requires `LEAD_WEBHOOK_URL` (an HTTPS receiving service) and `LEAD_WEBHOOK_SECRET` (shared HMAC key). The receiver must verify `X-Lead-Signature: sha256=<hex>` against the exact JSON request body, store leads durably and implement its own deduplication and notifications. `NEXT_PUBLIC_GA4_ID` and `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` are separate public integration values. WhatsApp and email links render only if an approved URL/address is configured. Do not add these values to Git.
 
 ## Launch review gates
