@@ -7,7 +7,8 @@ const choice = (values: readonly [string,...string[]]) => z.enum(values);
 const schema = z.object({
   budget: choice(['under-1m','1m-2m','2m-plus','flexible']),
   beds: choice(['studio','1','2','3','4-plus','flexible']),
-  property_type: choice(['condo','luxury condo','penthouse','waterfront condo','new construction','flexible']),
+  property_type: choice(['condo','luxury residence','waterfront residence','penthouse','new construction','branded residence','resale','flexible']),
+  buyer_objective: choice(['primary-residence','second-home','investment','undecided']),
   preferred_area_building: z.string().trim().max(160).default(''),
   timeline: choice(['0-3-months','3-6-months','6-12-months','exploring']),
   payment: choice(['cash','mortgage','undecided']),

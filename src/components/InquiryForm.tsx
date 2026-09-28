@@ -36,7 +36,7 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
     const res = await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>null);
     if (res?.ok) {
       event('form_submit',{intent,landing_page:window.location.pathname});
-      event('request_current_listings',{intent,landing_page:window.location.pathname});
+      event('request_matched_options',{intent,landing_page:window.location.pathname});
       setStatus('success');
       form.reset();
     } else {
@@ -57,7 +57,8 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
       <div className="trap" aria-hidden="true"><label>Website <input name="website" tabIndex={-1} autoComplete="off" /></label></div>
       <label>Budget <select name="budget" defaultValue={budget} required><option value="">Select budget</option><option value="under-1m">Under $1M</option><option value="1m-2m">$1M–$2M</option><option value="2m-plus">$2M+</option><option value="flexible">Flexible / exploring</option></select></label>
       <label>Beds <select name="beds" required defaultValue=""><option value="">Select bedrooms</option><option value="studio">Studio</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4-plus">4+</option><option value="flexible">Flexible</option></select></label>
-      <label>Property type <select name="property_type" required defaultValue={propertyType}><option value="" disabled>Select property type</option><option value="condo">Condo</option><option value="luxury condo">Luxury condo</option><option value="penthouse">Penthouse</option><option value="waterfront condo">Waterfront condo</option><option value="new construction">New construction</option><option value="flexible">Flexible</option></select></label>
+      <label>Property type <select name="property_type" required defaultValue={propertyType}><option value="" disabled>Select property type</option><option value="condo">Condo</option><option value="luxury residence">Luxury residence</option><option value="waterfront residence">Waterfront residence</option><option value="penthouse">Penthouse</option><option value="new construction">New construction</option><option value="branded residence">Branded residence</option><option value="resale">Resale</option><option value="flexible">Flexible / exploring</option></select></label>
+      <label>Buyer objective <select name="buyer_objective" required defaultValue=""><option value="">Select objective</option><option value="primary-residence">Primary residence</option><option value="second-home">Second home</option><option value="investment">Investment</option><option value="undecided">Undecided</option></select></label>
       <label>Preferred area / building <input name="preferred_area_building" defaultValue={building} maxLength={160} placeholder="Brickell Key, Echo Brickell…" /></label>
       <label>Timeline <select name="timeline" required defaultValue=""><option value="">Select timeline</option><option value="0-3-months">0–3 months</option><option value="3-6-months">3–6 months</option><option value="6-12-months">6–12 months</option><option value="exploring">Exploring</option></select></label>
       <label>Payment <select name="payment" required defaultValue=""><option value="">Select payment</option><option value="cash">Cash</option><option value="mortgage">Mortgage</option><option value="undecided">Undecided</option></select></label>
