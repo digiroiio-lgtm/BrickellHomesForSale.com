@@ -1,5 +1,6 @@
 type Section = { heading: string; text: string; checks: string[] };
-type PropertyTypeContent = {
+type ExploreLink = { label: string; href: string; description: string };
+export type PropertyTypeContent = {
   headline: string;
   formHeading: string;
   formDescription: string;
@@ -7,6 +8,12 @@ type PropertyTypeContent = {
   sections: Section[];
   brief: string;
   related: { label: string; href: string }[];
+  explore: {
+    propertyTypes: ExploreLink[];
+    areas: ExploreLink[];
+    buildings: ExploreLink[];
+    buying: ExploreLink[];
+  };
 };
 
 // These are buyer decision frameworks, not descriptions of available units.
@@ -23,7 +30,13 @@ export const propertyTypeContent: Record<string, PropertyTypeContent> = {
       { heading: 'Turn a broad search into a useful brief', text: 'A shortlist works best when it names both requirements and tradeoffs. A buyer who can exchange a higher floor for a better layout will see a different set of possibilities from someone whose view is essential.', checks: ['State your purchase ceiling and comfortable monthly cost.', 'Rank beds, usable layout, parking, view and move date.', 'Name any buildings or areas you want included or excluded.'] }
     ],
     brief: 'Share your budget, preferred area, bedrooms, parking needs and timing. Ask for current options to be checked against that brief.',
-    related: [{label:'Compare Brickell buildings',href:'/buildings/'},{label:'Read the HOA fee guide',href:'/hoa-fees/'},{label:'Plan the buying process',href:'/buying-a-condo-in-brickell/'}]
+    related: [{label:'Compare Brickell buildings',href:'/buildings/'},{label:'Read the HOA fee guide',href:'/hoa-fees/'},{label:'Plan the buying process',href:'/buying-a-condo-in-brickell/'}],
+    explore: {
+      propertyTypes: [{label:'Compare waterfront condos',href:'/waterfront-condos/',description:'Separate a bayfront address from a unit-level view.'},{label:'Explore luxury residences',href:'/luxury-condos/',description:'Assess service, privacy and total carrying cost.'}],
+      areas: [{label:'Explore Brickell Key',href:'/brickell-key/',description:'Test island access and building-specific costs.'},{label:'Compare Brickell Avenue',href:'/brickell-avenue/',description:'See how the corridor changes by block and building.'}],
+      buildings: [{label:'Read the Echo Brickell profile',href:'/buildings/echo-brickell/',description:'Review sourced building context and questions for a unit visit.'},{label:'Browse all building guides',href:'/buildings/',description:'Compare the editorial profiles before asking about a specific unit.'}],
+      buying: [{label:'Understand HOA fees',href:'/hoa-fees/',description:'Read fees beside budgets, reserves and assessments.'},{label:'Plan a Brickell condo purchase',href:'/buying-a-condo-in-brickell/',description:'Follow the search, document and closing decisions.'}]
+    }
   },
   'waterfront-condos': {
     headline: 'Separate the address from the view.',
@@ -36,7 +49,13 @@ export const propertyTypeContent: Record<string, PropertyTypeContent> = {
       { heading: 'Compare waterfront with the rest of your routine', text: 'The best outlook may not offer the easiest daily access or the ownership costs you want. Compare entrance, traffic, outdoor space and recurring expense with a non-waterfront alternative in your budget.', checks: ['Test arrival and departure at your normal travel times.', 'Compare total monthly cost beside view quality.', 'Decide whether the view, building location or outdoor access is the priority.'] }
     ],
     brief: 'Describe the water view you want, your acceptable monthly cost and whether a specific waterfront building is essential.',
-    related: [{label:'Brickell Key area guide',href:'/brickell-key/'},{label:'Condo insurance questions',href:'/condo-insurance/'},{label:'Compare building guides',href:'/buildings/'}]
+    related: [{label:'Brickell Key area guide',href:'/brickell-key/'},{label:'Condo insurance questions',href:'/condo-insurance/'},{label:'Compare building guides',href:'/buildings/'}],
+    explore: {
+      propertyTypes: [{label:'Compare all Brickell condos',href:'/condos-for-sale/',description:'Weigh layout and ownership cost alongside the view.'},{label:'Explore penthouses',href:'/penthouses/',description:'Check terrace rights and top-floor exposure.'}],
+      areas: [{label:'Explore Brickell Key',href:'/brickell-key/',description:'Consider access and exposure on the island.'},{label:'Compare Brickell Avenue',href:'/brickell-avenue/',description:'Compare exact locations along the corridor.'}],
+      buildings: [{label:'Read the Una Residences profile',href:'/buildings/una-residences/',description:'Review the project’s sourced waterfront context; confirm present status separately.'},{label:'Read the Baccarat Residences profile',href:'/buildings/baccarat-residences-miami/',description:'Review the riverfront project context; no unit view or availability is implied.'}],
+      buying: [{label:'Check condo insurance questions',href:'/condo-insurance/',description:'Separate association coverage from the unit policy.'},{label:'Review association documents',href:'/condo-documents/',description:'Request current financial, inspection and rules records.'}]
+    }
   },
   'luxury-condos': {
     headline: 'Define the experience behind the price.',
@@ -49,7 +68,13 @@ export const propertyTypeContent: Record<string, PropertyTypeContent> = {
       { heading: 'Compare the premium with your priorities', text: 'Two residences at similar asking prices can differ substantially in layout, service charges, privacy and monthly carrying cost. Use one scorecard and give each factor a weight before requesting a tailored search.', checks: ['Set a purchase ceiling and total monthly comfort range.', 'Rank service, privacy, view, usable space and move-in timing.', 'State which compromises you would accept.'] }
     ],
     brief: 'Tell us which matters most: privacy, service, views, space or a named building, along with budget and timing.',
-    related: [{label:'Explore penthouse due diligence',href:'/penthouses/'},{label:'Review condo documents',href:'/condo-documents/'},{label:'Compare Brickell buildings',href:'/buildings/'}]
+    related: [{label:'Explore penthouse due diligence',href:'/penthouses/'},{label:'Review condo documents',href:'/condo-documents/'},{label:'Compare Brickell buildings',href:'/buildings/'}],
+    explore: {
+      propertyTypes: [{label:'Explore penthouses',href:'/penthouses/',description:'Verify outdoor space, access and legal rights.'},{label:'Compare new construction',href:'/new-construction/',description:'Separate proposed features from completed homes.'}],
+      areas: [{label:'Compare Brickell Avenue',href:'/brickell-avenue/',description:'Test entrance, orientation and access on the corridor.'},{label:'Explore Brickell Key',href:'/brickell-key/',description:'Consider an island setting against mainland routines.'}],
+      buildings: [{label:'Read the Four Seasons profile',href:'/buildings/four-seasons-residences/',description:'Review sourced residence context and unit-specific service questions.'},{label:'Read the SLS LUX profile',href:'/buildings/sls-lux/',description:'Compare the project description with current ownership documents.'}],
+      buying: [{label:'Review condo documents',href:'/condo-documents/',description:'Check service rights, budgets and current building rules.'},{label:'Understand ongoing fees',href:'/hoa-fees/',description:'Compare included services with separate charges.'}]
+    }
   },
   'penthouses': {
     headline: 'Verify what the penthouse label includes.',
@@ -62,7 +87,13 @@ export const propertyTypeContent: Record<string, PropertyTypeContent> = {
       { heading: 'Test privacy and practical use', text: 'Exclusivity depends on the actual floor and building configuration. Visit the residence, study access points and consider whether the rooms and outdoor areas work for your everyday use, not only for a brochure photograph.', checks: ['Check elevator access and proximity to shared or mechanical spaces.', 'Examine sunlight, orientation and neighboring sightlines.', 'Compare total monthly cost with another premium residence.'] }
     ],
     brief: 'Specify your required terrace, privacy, layout, parking and budget; ask about a penthouse only after its unit-level rights can be verified.',
-    related: [{label:'Luxury residence guide',href:'/luxury-condos/'},{label:'Condo document checklist',href:'/condo-documents/'},{label:'Review ownership costs',href:'/hoa-fees/'}]
+    related: [{label:'Luxury residence guide',href:'/luxury-condos/'},{label:'Condo document checklist',href:'/condo-documents/'},{label:'Review ownership costs',href:'/hoa-fees/'}],
+    explore: {
+      propertyTypes: [{label:'Compare luxury residences',href:'/luxury-condos/',description:'Assess service, privacy and total cost.'},{label:'Explore waterfront condos',href:'/waterfront-condos/',description:'Compare a specific view with location and exposure.'}],
+      areas: [{label:'Explore Brickell Key',href:'/brickell-key/',description:'Assess island access and building differences.'},{label:'Compare Brickell Avenue',href:'/brickell-avenue/',description:'Consider orientation, arrival and daily routes.'}],
+      buildings: [{label:'Browse Brickell building profiles',href:'/buildings/',description:'Research building context before verifying any penthouse unit.'},{label:'Read the Echo Brickell profile',href:'/buildings/echo-brickell/',description:'Use its building questions without assuming penthouse availability.'}],
+      buying: [{label:'Check condo documents',href:'/condo-documents/',description:'Verify terrace and limited-use rights in writing.'},{label:'Review condo inspections',href:'/condo-inspections/',description:'Connect top-floor questions with current building records.'}]
+    }
   },
   'new-construction': {
     headline: 'Know the project stage before comparing homes.',
@@ -75,6 +106,12 @@ export const propertyTypeContent: Record<string, PropertyTypeContent> = {
       { heading: 'Compare projected and actual costs', text: 'Projected association expenses are estimates. An operating resale association has an adopted budget and history to inspect. Compare these different kinds of evidence without presenting one as equally certain as the other.', checks: ['Request the proposed budget and what it includes.', 'Compare it with current resale budgets and insurance information.', 'Allow for changes in taxes, insurance and financing before occupancy.'] }
     ],
     brief: 'Share your move date, deposit comfort level, budget and whether you would also consider a completed resale.',
-    related: [{label:'New construction vs resale',href:'/new-construction-vs-resale/'},{label:'Closing cost guide',href:'/closing-costs/'},{label:'Review building guides',href:'/buildings/'}]
+    related: [{label:'New construction vs resale',href:'/new-construction-vs-resale/'},{label:'Closing cost guide',href:'/closing-costs/'},{label:'Review building guides',href:'/buildings/'}],
+    explore: {
+      propertyTypes: [{label:'Compare completed condos',href:'/condos-for-sale/',description:'Use current unit and association records as a different evidence base.'},{label:'Explore luxury residences',href:'/luxury-condos/',description:'Compare proposed services against documented rights.'}],
+      areas: [{label:'Compare Brickell Avenue',href:'/brickell-avenue/',description:'Test the exact location and nearby routes.'},{label:'Explore Brickell Key',href:'/brickell-key/',description:'Consider a different area and building choice.'}],
+      buildings: [{label:'Read the Una Residences profile',href:'/buildings/una-residences/',description:'Review published project context; verify current stage directly.'},{label:'Read the Cipriani Residences profile',href:'/buildings/cipriani-residences-miami/',description:'Examine project questions without assuming delivery or inventory.'}],
+      buying: [{label:'Compare new construction with resale',href:'/new-construction-vs-resale/',description:'Weigh projected terms against an existing unit.'},{label:'Plan closing costs',href:'/closing-costs/',description:'Request a transaction-specific estimate.'}]
+    }
   }
 };
