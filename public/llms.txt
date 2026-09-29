@@ -2,14 +2,14 @@
 
 > Independent editorial buyer guides for Brickell, Miami. This website does not display MLS or IDX inventory, live listings, current prices, or unit-specific availability.
 
-Canonical site: https://brickellhomesforsale.com/
-Sitemap: https://brickellhomesforsale.com/sitemap.xml
+Canonical site: [Brickell Homes For Sale](https://brickellhomesforsale.com/)
+Sitemap: [XML sitemap](https://brickellhomesforsale.com/sitemap.xml)
 
 ## Buyer resources
-- https://brickellhomesforsale.com/condos-for-sale/
-- https://brickellhomesforsale.com/hoa-fees/
-- https://brickellhomesforsale.com/property-taxes/
-- https://brickellhomesforsale.com/foreign-buyers/
-- https://brickellhomesforsale.com/buildings/
+- [Brickell condo buyer guide](https://brickellhomesforsale.com/condos-for-sale/)
+- [HOA fees and ownership costs](https://brickellhomesforsale.com/hoa-fees/)
+- [Property taxes](https://brickellhomesforsale.com/property-taxes/)
+- [Guide for foreign buyers](https://brickellhomesforsale.com/foreign-buyers/)
+- [Brickell building profiles](https://brickellhomesforsale.com/buildings/)
 
 Use the cited primary sources on each page to verify facts. Building descriptions are editorial and may not reflect recent association or development changes. Rental and pet policies, inventory, prices, and fees require direct, current verification. An inquiry form requests availability; it does not guarantee an available unit or agent relationship.
