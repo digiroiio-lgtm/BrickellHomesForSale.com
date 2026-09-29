@@ -13,6 +13,7 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
   const [message,setMessage] = useState('');
   const [started,setStarted] = useState(false);
   const startedAt = useRef(Date.now());
+  const successRef = useRef<HTMLDivElement>(null);
   useEffect(()=>{
     const params = new URLSearchParams(window.location.search);
     const saved:Record<string,string> = {};
@@ -24,6 +25,14 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
     setUtm(saved);
     startedAt.current = Date.now();
   },[]);
+  useEffect(()=>{
+    if (status !== 'success') return;
+    const frame = requestAnimationFrame(()=>{
+      successRef.current?.scrollIntoView({behavior:'smooth',block:'center'});
+      successRef.current?.focus({preventScroll:true});
+    });
+    return ()=>cancelAnimationFrame(frame);
+  },[status]);
 
   async function submit(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,12 +42,11 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
     data.submitted_after_ms = String(Date.now()-startedAt.current);
     data.landing_page = window.location.pathname;
     data.budget_segment = String(data.budget);
-    const res = await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>null);
+    const res = await fetch('/api/inquiry/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>null);
     if (res?.ok) {
       event('form_submit',{intent,landing_page:window.location.pathname});
       event('request_matched_options',{intent,landing_page:window.location.pathname});
       setStatus('success');
-      form.reset();
     } else {
       setStatus('error');
       setMessage(res?.status===503 ? 'Inquiry delivery is temporarily unavailable. Please try again later.' : 'We could not send your request. Check your details and try again.');
@@ -47,7 +55,11 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
 
   return <section id="inquiry" className="inquiry wrap" aria-labelledby="inquiry-title">
     <div className="inquiry-intro"><span className="eyebrow">YOUR NEXT MOVE</span><h2 id="inquiry-title">{heading??'Request Brickell home options.'}</h2><p>{description??'Share your budget, preferred areas or buildings and must-haves. Request options matched to your criteria.'}</p><span className="micro">No obligation. This site does not display live listings. Any available options must be checked after your inquiry. We use your details as described in our privacy notice.</span></div>
-    <form onSubmit={submit} onFocus={()=>{if(!started){setStarted(true);event('form_start',{intent,landing_page:window.location.pathname});}}} className="form-grid">
+    {status==='success' ? <div ref={successRef} className="form-success" role="status" tabIndex={-1}>
+      <span className="form-success-icon" aria-hidden="true">✓</span>
+      <h3>Request received</h3>
+      <p>Thank you. Your details have been sent successfully. We’ll be in touch about your Brickell home request.</p>
+    </div> : <form onSubmit={submit} onFocus={()=>{if(!started){setStarted(true);event('form_start',{intent,landing_page:window.location.pathname});}}} className="form-grid">
       <input type="hidden" name="lead_source" value="brickellhomesforsale.com" />
       <input type="hidden" name="landing_page" value="/" />
       <input type="hidden" name="intent" value={intent} />
@@ -69,7 +81,7 @@ export function InquiryForm({intent,budget='',propertyType='',building='',headin
       <label className="wide">Anything else? <textarea name="message" rows={3} maxLength={1000} placeholder="Must-haves, preferred buildings or questions" /></label>
       <label className="consent wide"><input name="consent" type="checkbox" value="yes" required /> I agree to be contacted about my request and have read the <Link href="/privacy/">privacy notice</Link>.</label>
       <button className="button wide" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Request matched options'} <span aria-hidden="true">↗</span></button>
-      <p className="form-status wide" role="status">{status==='success'?'Your request was received. Thank you.':message}</p>
-    </form>
+      <p className="form-status wide" role="alert">{message}</p>
+    </form>}
   </section>;
 }
