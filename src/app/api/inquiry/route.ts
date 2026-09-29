@@ -1,4 +1,4 @@
-import { createHmac, randomUUID } from 'node:crypto';
+import { randomUUID } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -55,13 +55,9 @@ export async function POST(req: NextRequest) {
   // Accept bot traps without revealing which rule fired. Never forward spam.
   if (website) return NextResponse.json({ok:true});
   if (submitted_after_ms<1200) return NextResponse.json({error:'Please retry your inquiry'},{status:400});
-  const endpoint=process.env.LEAD_WEBHOOK_URL;
-  const secret=process.env.LEAD_WEBHOOK_SECRET;
-  if (!endpoint || !secret || !endpoint.startsWith('https://')) return NextResponse.json({error:'Inquiry delivery unavailable'},{status:503});
   const payload=JSON.stringify({id:randomUUID(),received_at:new Date().toISOString(),...lead});
-  const signature=createHmac('sha256',secret).update(payload).digest('hex');
   try {
-    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','X-Lead-Signature':`sha256=${signature}`},body:payload,signal:AbortSignal.timeout(8000),cache:'no-store'});
+    const response=await fetch('https://formspree.io/f/moevrvak',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:payload,signal:AbortSignal.timeout(8000),cache:'no-store'});
     if (!response.ok) return NextResponse.json({error:'Inquiry delivery unavailable'},{status:503});
     return NextResponse.json({ok:true},{status:201});
   } catch { return NextResponse.json({error:'Inquiry delivery unavailable'},{status:503}); }
