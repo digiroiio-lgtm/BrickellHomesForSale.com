@@ -2,13 +2,14 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { buildings, buildingBySlug } from '@/lib/buildings';
-import { metadataFor, breadcrumbSchema, StructuredData } from '@/lib/seo';
+import { metadataFor, pageGraph, richDescription, buildingTitle, StructuredData } from '@/lib/seo';
 import { InquiryForm } from '@/components/InquiryForm';
 import { site } from '@/lib/site';
+import { Breadcrumb, ReviewedBy } from '@/components/PageMeta';
 
 export function generateStaticParams(){return buildings.map(b=>({slug:b.slug}));}
 export const dynamicParams=false;
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const b=buildingBySlug[slug];return b?metadataFor(`/buildings/${slug}/`,`${b.name} | Brickell residential building guide`,b.summary):{};}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const b=buildingBySlug[slug];return b?metadataFor(`/buildings/${slug}/`,buildingTitle(b.name),richDescription(b.summary,['Source-linked facts and buyer questions; no listings or prices shown.','Source-linked facts and buyer questions; no listings.','No listings or prices shown.']),{article:true,image:`/buildings/${slug}/opengraph-image/`}):{};}
 
 const developmentSlugs = new Set(['una-residences','cipriani-residences-miami','viceroy-brickell','baccarat-residences-miami','residences-at-1428-brickell','st-regis-residences-miami','mercedes-benz-places-miami','2200-brickell','mandarin-oriental-residences-miami']);
 const brandedSlugs = new Set(['four-seasons-residences','cipriani-residences-miami','viceroy-brickell','baccarat-residences-miami','st-regis-residences-miami','mercedes-benz-places-miami','mandarin-oriental-residences-miami']);
@@ -26,8 +27,8 @@ export default async function BuildingPage({params}:{params:Promise<{slug:string
  const {slug}=await params;const b=buildingBySlug[slug];if(!b)notFound();
  const area=areaLink(b.area),development=developmentSlugs.has(slug),branded=brandedSlugs.has(slug),waterfront=waterfrontSlugs.has(slug);
  const type=branded?{label:'Branded residences',href:'/branded-residences/'}:waterfront?{label:'Waterfront residences',href:'/waterfront-condos/'}:development?{label:'New construction',href:'/new-construction/'}:{label:'High-rise residences',href:'/high-rise-residences/'};
- return <><StructuredData data={breadcrumbSchema([{name:'Home',path:'/'},{name:area.label,path:area.href},{name:'Buildings',path:'/buildings/'},{name:b.name,path:`/buildings/${slug}/`}])}/>
- <section className="wrap page-header"><nav className="breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href={area.href}>{area.label}</Link><span>/</span><Link href="/buildings/">Buildings</Link><span>/</span><span aria-current="page">{b.name}</span></nav><span className="eyebrow">BUILDING NOTEBOOK / {b.area.toUpperCase()}</span><h1>{b.name}</h1><p className="page-deck">{b.summary}</p><Link className="button" href="#inquiry">Request matched options ↗</Link></section>
+ return <><StructuredData data={pageGraph({path:`/buildings/${slug}/`,name:buildingTitle(b.name),description:b.summary,trail:[{name:'Home',path:'/'},{name:'Building guides',path:'/buildings/'},{name:b.name,path:`/buildings/${slug}/`}],kind:'article'})}/>
+ <section className="wrap page-header"><Breadcrumb trail={[{name:'Home',path:'/'},{name:'Building guides',path:'/buildings/'},{name:b.name,path:`/buildings/${slug}/`}]} /><span className="eyebrow">BUILDING NOTEBOOK / {b.area.toUpperCase()}</span><h1>{b.name}</h1><p className="page-deck">{b.summary}</p><ReviewedBy path={`/buildings/${slug}/`} /><Link className="button" href="#inquiry">Request matched options ↗</Link></section>
  <div className="wrap article-layout"><article>
  <div className="article-mark">01 — LOCATION & POSITIONING</div><h2>Place the development in its context.</h2><p>{b.name} is profiled as {b.profile.toLowerCase()} in the {b.area} search area. This editorial classification helps compare residential choices; it does not establish a legal submarket boundary, completion stage or current unit availability.</p>
  <div className="building-facts"><dl><div><dt>Related area</dt><dd><Link className="text-link" href={area.href}>{area.label} ↗</Link></dd></div><div><dt>Residence research</dt><dd><Link className="text-link" href={type.href}>{type.label} ↗</Link></dd></div><div><dt>Sale-stage evidence</dt><dd>{development?'Review current project status, offering documents and deposit terms.':'Ask whether the actual residence is a resale and inspect current documents.'}</dd></div><div><dt>Broad unit mix</dt><dd>Request current official floor plans and the legal unit description; availability and layouts are not verified here.</dd></div></dl></div>
