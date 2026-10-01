@@ -1,7 +1,7 @@
 export const site = {
   name: 'Brickell Homes For Sale',
   origin: 'https://brickellhomesforsale.com',
-  description: 'Independent buyer intelligence for Brickell homes and residences in Miami, Florida. Compare property types, submarkets, buildings, total ownership costs and purchase decisions.',
+  description: 'Independent buyer guides for Brickell homes in Miami, Florida: compare property types, areas, buildings, ownership costs and purchase decisions.',
   disclosure: 'Independent editorial buyer research and inquiry site. No MLS feed, live listings, prices or unit availability are displayed; request options matched to your brief.'
 };
 
