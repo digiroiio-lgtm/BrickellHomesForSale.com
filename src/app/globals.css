@@ -65,3 +65,6 @@
 .quick-answer p{margin:0;line-height:1.65}
 .skip-link{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:100}
 .skip-link:focus{left:8px}
+
+/* The diagram sits on a light panel even inside the dark band; keep its label readable (4.5:1). */
+.dark-band .diagram .eyebrow{color:var(--teal)}
