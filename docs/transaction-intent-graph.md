@@ -19,6 +19,8 @@ The node numbers refer to the separately approved 100-keyword Money Page Map. **
 - In this phase, a Money Page is a distinct transaction-intent editorial landing page with a qualified inquiry CTA. It can be indexed when it passes the editorial publication gate below, without showing inventory. Its copy must say that matching and availability require independent follow-up; it must not imply a live property feed or guaranteed results. Filter and sort combinations without independent buyer intent remain non-indexable and point to an appropriate canonical page.
 - A listing detail page requires a licensed data source and the current listing record. A building profile is not a listing detail page, and project marketing is not evidence of current unit availability.
 
+> **Standing quality layer (added 2026-10-07):** every new or changed URL in this plan must also pass the pre-publish gate in `docs/seo-geo-constitution.md` (section 27). Publish in reviewed batches, never in bulk; scale comes last. The audit in `docs/seo-audit/` shows which existing templates are thin before more are added.
+
 ## Money Page publication gate
 
 For each proposed indexable URL, require all of the following before release:

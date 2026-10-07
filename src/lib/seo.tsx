@@ -138,7 +138,6 @@ export function pageGraph(input: {
       description: input.description,
       inLanguage: 'en-US',
       mainEntityOfPage: { '@id': `${url}#webpage` },
-      author: { '@id': orgId },
       publisher: { '@id': orgId },
       about: place,
       ...(modified ? { dateModified: modified } : {}),
