@@ -1,5 +1,7 @@
 # Brickell Homes For Sale
 
+The October 2026 Search Console findings, live HTTP checks, crawlability fixes and post-publication steps are documented in [the indexing follow-up](docs/indexing-recovery.md). Run `npm run check:indexing` against a running production build to audit all 81 sitemap pages; GitHub Actions also performs this audit on pull requests and pushes to main.
+
 The approved next-stage SEO/GEO architecture is documented in [the transaction-intent graph](docs/transaction-intent-graph.md). It defines the Core → Price → Buildings → Bedroom/Features → New Construction → Investor rollout and publication gates for distinct editorial Money Pages. This phase remains MLS-free; licensed inventory is a separate future option.
 
 An MLS/IDX-free editorial buyer acquisition site built with Next.js 15, React 19 and TypeScript. The repository began empty; the default branch was initialized with a README, and this implementation lives on `feat/brickell-buyer-engine` for review.

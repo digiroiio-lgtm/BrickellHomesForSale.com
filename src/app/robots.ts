@@ -15,7 +15,6 @@ export default function robots():MetadataRoute.Robots{
       {userAgent:'*',allow:'/',disallow:'/api/'},
       {userAgent:aiCrawlers,allow:'/',disallow:'/api/'}
     ],
-    sitemap:`${site.origin}/sitemap.xml`,
-    host:site.origin
+    sitemap:`${site.origin}/sitemap.xml`
   };
 }
