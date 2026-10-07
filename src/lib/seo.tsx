@@ -46,7 +46,7 @@ export function metadataFor(path: string, title: string, description: string, op
   return {
     title: { absolute: full },
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: abs(path) },
     openGraph: {
       title: full,
       description,

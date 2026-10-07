@@ -7,6 +7,7 @@ import { InquiryForm } from '@/components/InquiryForm';
 
 export const metadata: Metadata = metadataFor('/buyer-guides/','Brickell residential buyer guides','Research property types, areas, ownership economics, comparisons and transaction decisions across Brickell homes.');
 const groups = [
+  { heading:'Compare condos by budget', slugs:['brickell-condos-under-1m','brickell-condos-1m-2m','brickell-condos-2m-plus'] },
   { heading:'Property types and objectives', slugs:['condos-for-sale','waterfront-condos','luxury-condos','penthouses','new-construction','branded-residences','high-rise-residences','resale-properties','pre-construction','primary-residence-brickell','second-home-brickell','investment-properties-brickell'] },
   { heading:'Brickell areas', slugs:['brickell-key','brickell-avenue','brickell-core','south-brickell','brickell-bay-drive','north-brickell-miami-river'] },
   { heading:'Ownership economics', slugs:['ownership-costs','hoa-fees','property-taxes','condo-insurance','condo-reserves','brickell-condo-special-assessments','closing-costs','financing','brickell-condo-mortgage-requirements'] },
