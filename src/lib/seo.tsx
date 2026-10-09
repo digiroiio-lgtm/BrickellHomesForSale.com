@@ -110,10 +110,21 @@ export function pageGraph(input: {
   kind?: 'article' | 'collection' | 'page' | 'about';
   items?: Crumb[];
   sourceKeys?: SourceKey[];
+  /** Extra citations, e.g. a building's official project source. */
+  citations?: { name: string; url: string }[];
+  /** Open Graph image path, defaults to the site-wide image. */
+  image?: string;
+  /** A named building profile: a Place linked to its official source, never an offer or listing. */
+  entity?: { name: string; sourceUrl: string };
+  /** Parent collection page, e.g. /buildings/. */
+  parent?: string;
 }) {
   const url = abs(input.path);
   const kind = input.kind ?? 'page';
   const modified = revisionDate(input.path);
+  const imageId = `${url}#primaryimage`;
+  const entityId = `${url}#building`;
+  const citations = [...(input.sourceKeys ?? []).map(k => ({ name: buyerSources[k].label, url: buyerSources[k].url })), ...(input.citations ?? [])];
   const webPageType = kind === 'collection' ? 'CollectionPage' : kind === 'about' ? 'AboutPage' : 'WebPage';
   const graph: Record<string, unknown>[] = [
     {
@@ -123,12 +134,16 @@ export function pageGraph(input: {
       name: input.name,
       description: input.description,
       inLanguage: 'en-US',
-      isPartOf: { '@id': websiteId },
+      isPartOf: input.parent ? [{ '@id': websiteId }, { '@id': `${abs(input.parent)}#webpage` }] : { '@id': websiteId },
+      primaryImageOfPage: { '@id': imageId },
       ...(input.trail && input.trail.length > 1 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
       ...(modified ? { dateModified: modified } : {}),
       ...(kind === 'collection' && input.items ? { mainEntity: { '@id': `${url}#list` } } : {})
     },
-    ...(input.trail && input.trail.length > 1 ? [breadcrumbNode(input.trail, `${url}#breadcrumb`)] : [])
+    { '@type': 'ImageObject', '@id': imageId, url: abs(input.image ?? '/opengraph-image/'), width: 1200, height: 630 },
+    ...(input.trail && input.trail.length > 1 ? [breadcrumbNode(input.trail, `${url}#breadcrumb`)] : []),
+    ...(input.parent ? [{ '@type': 'CollectionPage', '@id': `${abs(input.parent)}#webpage`, url: abs(input.parent) }] : []),
+    ...(input.entity ? [{ '@type': 'Place', '@id': entityId, name: input.entity.name, containedInPlace: place, sameAs: input.entity.sourceUrl }] : [])
   ];
   if (kind === 'article') {
     graph.push({
@@ -139,9 +154,10 @@ export function pageGraph(input: {
       inLanguage: 'en-US',
       mainEntityOfPage: { '@id': `${url}#webpage` },
       publisher: { '@id': orgId },
-      about: place,
+      image: { '@id': imageId },
+      about: input.entity ? { '@id': entityId } : place,
       ...(modified ? { dateModified: modified } : {}),
-      ...(input.sourceKeys?.length ? { citation: input.sourceKeys.map(k => ({ '@type': 'CreativeWork', name: buyerSources[k].label, url: buyerSources[k].url })) } : {})
+      ...(citations.length ? { citation: citations.map(c => ({ '@type': 'CreativeWork', name: c.name, url: c.url })) } : {})
     });
   }
   if (kind === 'collection' && input.items) {

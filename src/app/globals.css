@@ -68,3 +68,10 @@
 
 /* The diagram sits on a light panel even inside the dark band; keep its label readable (4.5:1). */
 .dark-band .diagram .eyebrow{color:var(--teal)}
+
+/* Keyboard focus, motion preference, balanced headings and printable guides. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+h1,h2,h3{text-wrap:balance}
+@media print{.header,.footer,.inquiry,.skip-link,aside,.nav-cta,.button,.hero-art{display:none!important}body{background:#fff}.article-layout{display:block}a{text-decoration:underline}.sources a::after{content:" (" attr(href) ")";font-size:11px}}
+.aside-card p{color:#4b6065}
