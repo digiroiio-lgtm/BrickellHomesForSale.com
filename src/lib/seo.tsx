@@ -115,7 +115,7 @@ export function pageGraph(input: {
   /** Open Graph image path, defaults to the site-wide image. */
   image?: string;
   /** A named building profile: a Place linked to its official source, never an offer or listing. */
-  entity?: { name: string; sourceUrl: string };
+  entity?: { name: string; sourceUrl: string; properties?: { name: string; value: string }[] };
   /** Parent collection page, e.g. /buildings/. */
   parent?: string;
 }) {
@@ -143,7 +143,7 @@ export function pageGraph(input: {
     { '@type': 'ImageObject', '@id': imageId, url: abs(input.image ?? '/opengraph-image/'), width: 1200, height: 630 },
     ...(input.trail && input.trail.length > 1 ? [breadcrumbNode(input.trail, `${url}#breadcrumb`)] : []),
     ...(input.parent ? [{ '@type': 'CollectionPage', '@id': `${abs(input.parent)}#webpage`, url: abs(input.parent) }] : []),
-    ...(input.entity ? [{ '@type': 'Place', '@id': entityId, name: input.entity.name, containedInPlace: place, sameAs: input.entity.sourceUrl }] : [])
+    ...(input.entity ? [{ '@type': 'Place', '@id': entityId, name: input.entity.name, containedInPlace: place, sameAs: input.entity.sourceUrl, ...(input.entity.properties?.length ? { additionalProperty: input.entity.properties.map(x => ({ '@type': 'PropertyValue', name: x.name, value: x.value })) } : {}) }] : [])
   ];
   if (kind === 'article') {
     graph.push({

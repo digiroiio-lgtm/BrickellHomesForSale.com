@@ -25,3 +25,15 @@ export function profilesForGuide(guideSlug: string) {
   const byType = typeGuides[guideSlug];
   return buildings.filter(b => byType ? byType(b.slug) : areaLink(b.area).href === `/${guideSlug}/`);
 }
+
+/** Up to three other profiles in the same area, topped up with the same residence type. */
+export function peersFor(slug: string) {
+  const self = buildings.find(b => b.slug === slug);
+  if (!self) return [];
+  const areaHref = areaLink(self.area).href;
+  const kind = (s: string) => brandedSlugs.has(s) ? 'branded' : waterfrontSlugs.has(s) ? 'waterfront' : developmentSlugs.has(s) ? 'development' : 'tower';
+  const others = buildings.filter(b => b.slug !== slug);
+  const sameArea = others.filter(b => areaLink(b.area).href === areaHref);
+  const sameType = others.filter(b => kind(b.slug) === kind(slug) && !sameArea.includes(b));
+  return [...sameArea, ...sameType].slice(0, 3);
+}

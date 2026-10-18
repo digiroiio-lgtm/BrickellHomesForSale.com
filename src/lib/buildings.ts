@@ -7,6 +7,10 @@ export type Building = {
   confirmed: string[];
   questions: string[];
   source: { label: string; url: string };
+  /** Neutral facts the official source states explicitly, e.g. floors or architect. Never prices, availability or policies. */
+  facts?: { label: string; value: string }[];
+  /** Date (YYYY-MM-DD) the facts were checked against the official source. */
+  factsChecked?: string;
 };
 
 // Only cite the linked project/operator source for the public statements here.
