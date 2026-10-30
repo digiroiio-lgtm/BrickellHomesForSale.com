@@ -44,3 +44,11 @@ No licensed feed is included in this implementation.
 ## Condo search questions (October 30, 2026)
 
 `/where-to-find-brickell-condos/` answers all 15 search and buying questions with matching visible FAQPage data. Its questions and answers also appear in `/llms-full.txt`; the registry supplies sitemap, feed and buyer-guide discovery. See [Nightwatch tracking status](docs/nightwatch-prompts.md) for the 5 saved prompts and the 10 blocked by the account limit. FAQ markup describes the page; no search appearance or AI citation is promised.
+
+## Buyer decision tools (October 30, 2026)
+
+- `/compare-brickell-buildings/`: filter 23 existing source-linked profiles by editorial area or residential positioning; compare up to three side by side. The selected slugs persist in the page URL. Three featured developer portfolios have additional dated evidence; missing current stage, fees and rental permissions remain explicitly unverified.
+- `/brickell-condo-cost-calculator/`: user-entered USD inputs, cash or fully amortizing fixed-rate finance, explicit zero-cost entries, a monthly breakdown, annual budget, purchase cash plan and in-memory A/B scenario comparison. No tax/rate/HOA data feed. The optional example is invented and clearly labeled. Inputs are not persisted or included in analytics.
+- `/brickell-condos-under-750k/`: an exact-ceiling budget guide with three visible FAQs and matching structured answers; linked from the original 15-question guide and budget index. No unit availability is asserted.
+
+`npm run check:tools` checks cash/loan arithmetic, zero interest, rejected invalid inputs and comparison coverage. The rendered indexing audit now checks canonical-linked WebPage graphs, breadcrumbs and visible FAQ text on every sitemap page. Building Article graphs cite their official project source. The comparison page uses CollectionPage and ItemList for its visible 23-profile catalogue.

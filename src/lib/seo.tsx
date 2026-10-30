@@ -111,6 +111,7 @@ export function pageGraph(input: {
   kind?: 'article' | 'collection' | 'page' | 'about';
   items?: Crumb[];
   sourceKeys?: SourceKey[];
+  citations?: { name:string; url:string }[];
   faqs?: { id: string; question: string; answer: string }[];
 }) {
   const url = abs(input.path);
@@ -145,7 +146,7 @@ export function pageGraph(input: {
       publisher: { '@id': orgId },
       about: place,
       ...(modified ? { dateModified: modified } : {}),
-      ...(input.sourceKeys?.length ? { citation: input.sourceKeys.map(k => ({ '@type': 'CreativeWork', name: buyerSources[k].label, url: buyerSources[k].url })) } : {})
+      ...((input.sourceKeys?.length || input.citations?.length) ? { citation: [...(input.sourceKeys??[]).map(k=>({ '@type':'CreativeWork', name:buyerSources[k].label, url:buyerSources[k].url })), ...(input.citations??[]).map(source=>({ '@type':'CreativeWork', ...source }))] } : {})
     });
   }
   if (kind === 'collection' && input.items) {

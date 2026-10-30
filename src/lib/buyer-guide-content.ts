@@ -1,3 +1,4 @@
+import { budget750Detail } from './budget-750';
 // Buyer research prompts. Verify applicable documents and professional advice for each transaction.
 export const buyerGuideContent: Record<string, {
   headline: string;
@@ -6,6 +7,7 @@ export const buyerGuideContent: Record<string, {
   brief: string;
   related: { label: string; href: string }[];
 }> = {
+  'brickell-condos-under-750k': budget750Detail,
   'where-to-find-brickell-condos': {
     headline: 'Give each source a clear job in your search.',
     intro: 'A listing portal helps identify advertised units. A licensed representative can check status and arrange a viewing. Building research helps you assess the obligations behind those units. Use all three with the same address, budget and intended use so a broad search becomes a practical shortlist.',

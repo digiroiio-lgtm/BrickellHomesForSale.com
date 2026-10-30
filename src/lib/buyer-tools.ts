@@ -1,0 +1,5 @@
+export const buyerTools = [
+  { path:'/compare-brickell-buildings/', title:'Compare Brickell condo buildings', description:'Compare 23 source-linked Brickell building profiles by area, residence type, published facts and buyer checks. Select up to three side by side.' },
+  { path:'/brickell-condo-cost-calculator/', title:'Brickell condo ownership cost calculator', description:'Calculate a Brickell condo budget using your HOA, taxes, insurance, assessments and mortgage inputs. Compare two cash or fixed-rate loan scenarios.' }
+];
+export const calculatorMethod = 'Monthly budget = fixed-rate mortgage principal and interest + regular association charges + annual property taxes / 12 + annual separately paid insurance / 12 + separate monthly assessments + personal contingency savings + other monthly costs + mortgage insurance if financing. Purchase cash plan = cash price or down payment + entered upfront costs, before deposits, credits and settlement adjustments. No rate, tax amount, HOA charge or return is sourced automatically.';

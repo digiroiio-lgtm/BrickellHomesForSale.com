@@ -8,7 +8,7 @@ const base = new URL(process.argv[2] || 'http://localhost:3000');
 const revisions = JSON.parse(fs.readFileSync(path.join(__dirname, '../src/lib/content-revisions.json'), 'utf8'));
 const problems = [];
 const fail = message => problems.push(message);
-const decode = value => value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+const decode = value => value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#(?:39|x27);/gi, "'");
 const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)\s*=\s*["']([^"']*)["']/g)].map(m => [m[1].toLowerCase(), decode(m[2])]));
 async function get(route) {
   const response = await fetch(new URL(route, base), { redirect: 'manual', signal: AbortSignal.timeout(30000) });
@@ -42,6 +42,23 @@ async function main() {
         const { response, text } = await get(route);
         assert(/text\/html/i.test(response.headers.get('content-type') || ''), `${route}: not HTML`);
         assert(!/\b(noindex|none)\b/i.test(response.headers.get('x-robots-tag') || ''), `${route}: noindex response header`);
+        // Check the page graph against canonical and visible content.
+        const nodes=[...text.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(m=>JSON.parse(m[1])['@graph']||[]);
+        const page=nodes.find(n=>n['@id']===`${url}#webpage`);
+        assert(page, `${route}: missing canonical WebPage graph`);
+        assert.equal(page.url,url,`${route}: graph URL differs`);
+        if(route!=='/'){
+          const crumbs=nodes.find(n=>n['@type']==='BreadcrumbList');
+          assert(crumbs,`${route}: missing breadcrumb schema`);
+          assert.equal(crumbs.itemListElement.at(-1).item,url,`${route}: breadcrumb target differs`);
+        }
+        const faq=nodes.find(n=>Array.isArray(n['@type'])&&n['@type'].includes('FAQPage'));
+        const visibleOnly=text.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'');
+        if(faq) for(const q of faq.mainEntity){
+          const normalized=decode(visibleOnly).replace(/&amp;/g,'&');
+          assert(normalized.includes(q.name),`${route}: FAQ question absent from HTML`);
+          assert(normalized.includes(q.acceptedAnswer.text),`${route}: FAQ answer absent from HTML`);
+        }
         // Ignore hydration payloads: only real HTML anchors count for discovery.
         const html = text.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
         const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] || '';
@@ -83,6 +100,6 @@ async function main() {
   assert(/image\//i.test(icon.headers.get('content-type') || ''), 'favicon.ico is not served as an image');
   assert(iconText.length, 'favicon.ico is empty');
   if (problems.length) throw new Error(problems.join('\n'));
-  console.log(`Indexing audit passed: ${urls.length} pages return 200, self-canonicalize, allow indexing and are reachable within two clicks. robots.txt and favicon.ico OK.`);
+  console.log(`Indexing audit passed: ${urls.length} pages return 200, self-canonicalize, have matching page/breadcrumb/FAQ data, allow indexing and are reachable within two clicks. robots.txt and favicon.ico OK.`);
 }
 main().catch(error => { console.error(error.message); process.exitCode = 1; });

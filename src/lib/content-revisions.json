@@ -1,15 +1,15 @@
 {
   "/": {
     "date": "2026-10-30",
-    "hash": "b3866813b696d56c9b6da9f2bc97d1f94aa84aa3d286842f6b9feadcceb1e8f6"
+    "hash": "03b7aeb7a7f5c7ad76c9a315fcd11575426c3903f927d9240a79608a0f4cca7d"
   },
   "/buildings/": {
-    "date": "2026-10-01",
-    "hash": "0944cf0ebf55e04f2c244a0f9556604763afdc6b49f7dbcb0c42b7d36920fb9b"
+    "date": "2026-10-30",
+    "hash": "cb30826bb5854e6b4dcf1ba762f02c4b36218cee91a865f1c78e86ea0b10bbe8"
   },
   "/buyer-guides/": {
     "date": "2026-10-30",
-    "hash": "39659818f126366366a2fe5d4b4b4499ebeb4281f5e65c83cd8f5e8666db18fd"
+    "hash": "bab29ca43e8cc853defcd5c3eb96d34bfbdee2ece6fc936c6a7b5f9d69e5f7a2"
   },
   "/about/": {
     "date": "2026-09-28",
@@ -26,6 +26,14 @@
   "/disclosures/": {
     "date": "2026-09-28",
     "hash": "46fd0d492ff12112ea3a41a661d3ffebed8cf9cc60c9560b60f521e7e9e06ea8"
+  },
+  "/compare-brickell-buildings/": {
+    "date": "2026-10-30",
+    "hash": "e68f216b197c3b3c9f7c741abd1f9c5225dc529f73b086707e8d0a5f00716b22"
+  },
+  "/brickell-condo-cost-calculator/": {
+    "date": "2026-10-30",
+    "hash": "aa4ee508e915b5377286b48c5dade224691f93780c27d325083e68b0e81648a8"
   },
   "/privacy/": {
     "date": "2026-10-01",
@@ -233,7 +241,11 @@
   },
   "/where-to-find-brickell-condos/": {
     "date": "2026-10-30",
-    "hash": "19c29f8f6bcbc555cb2afb594b9ddbc14390641af9aab2fdfbcace2585b610a9"
+    "hash": "44b792d5bc87b3f269863b7aff5521e31e98e368792f0fbb85e5dc7bb5e51f94"
+  },
+  "/brickell-condos-under-750k/": {
+    "date": "2026-10-30",
+    "hash": "02f0d2c407f989e716c24c22b46b22a507711a3265128d5e116bb35105482836"
   },
   "/buildings/reach-brickell-city-centre/": {
     "date": "2026-09-28",

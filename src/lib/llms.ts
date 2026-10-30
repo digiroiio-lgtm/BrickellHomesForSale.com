@@ -1,3 +1,6 @@
+import { budget750Faqs } from './budget-750';
+import { buyerTools, calculatorMethod } from './buyer-tools';
+import { comparisonBuildings, comparisonMethodology } from './building-comparison';
 import { searchGuide, searchFaqs } from './search-guide';
 import { guides, guideBySlug } from './content';
 import { buildings } from './buildings';
@@ -12,7 +15,7 @@ import { latestRevision, revisionDate } from './seo';
 const groups: { heading: string; slugs: string[] }[] = [
   { heading: 'Property types', slugs: ['condos-for-sale', 'luxury-condos', 'waterfront-condos', 'penthouses', 'new-construction', 'branded-residences', 'high-rise-residences', 'resale-properties', 'pre-construction'] },
   { heading: 'Brickell areas', slugs: ['brickell-key', 'brickell-avenue', 'brickell-core', 'south-brickell', 'brickell-bay-drive', 'north-brickell-miami-river'] },
-  { heading: 'Budget bands (editorial frameworks, no prices or listings)', slugs: ['brickell-condos-under-1m', 'brickell-condos-1m-2m', 'brickell-condos-2m-plus'] },
+  { heading: 'Budget bands (editorial frameworks, no prices or listings)', slugs: ['brickell-condos-under-750k', 'brickell-condos-under-1m', 'brickell-condos-1m-2m', 'brickell-condos-2m-plus'] },
   { heading: 'Ownership costs and financing', slugs: ['ownership-costs', 'hoa-fees', 'property-taxes', 'condo-insurance', 'condo-reserves', 'brickell-condo-special-assessments', 'closing-costs', 'financing', 'brickell-condo-mortgage-requirements', 'cash-vs-financing-brickell-condo'] },
   { heading: 'Buying process and due diligence', slugs: ['buying-a-home-in-brickell', 'buying-a-condo-in-brickell', 'pre-construction-buying-process', 'brickell-condo-closing-process', 'brickell-condo-application-approval', 'condo-documents', 'condo-inspections', 'brickell-condo-rental-restrictions', 'brickell-condo-pet-rules'] },
   { heading: 'Buyer types', slugs: ['foreign-buyers', 'first-time-condo-buyer', 'primary-residence-brickell', 'second-home-brickell', 'investment-properties-brickell', 'brickell-condo-investment'] },
@@ -43,6 +46,7 @@ export function llmsTxt(): string {
     }
     lines.push('');
   }
+  lines.push('## Buyer decision tools', ...buyerTools.map(tool=>`- [${tool.title}](${url(tool.path)}): ${tool.description}`), '');
   lines.push('## Brickell building profiles', `- [All Brickell building profiles](${url('/buildings/')}): source-linked profiles of ${buildings.length} Brickell residential developments with buyer questions; no unit availability.`);
   for (const b of buildings) lines.push(`- [${b.name}](${url(`/buildings/${b.slug}/`)}): ${b.summary}`);
   lines.push('', '## Optional', `- [All buyer guides](${url('/buyer-guides/')}): index of every guide`);
@@ -67,12 +71,14 @@ export function llmsFullTxt(): string {
       if (matrix) {
         out.push(`### ${matrix.heading}`, '', matrix.intro, '', '| Compare | Ask for | Why it matters |', '| --- | --- | --- |', ...matrix.rows.map(r => `| ${r.map(cell => cell.replace(/\|/g, '/')).join(' | ')} |`), '');
       }
-      if (slug === searchGuide.slug) for (const faq of searchFaqs) out.push(`### ${faq.question}`, '', faq.answer, '', ...faq.links.map(link => `- [${link.label}](${link.href.startsWith('/') ? url(link.href) : link.href})`), '');
+      for (const faq of slug === searchGuide.slug ? searchFaqs : slug === 'brickell-condos-under-750k' ? budget750Faqs : []) out.push(`### ${faq.question}`, '', faq.answer, '', ...faq.links.map(link => `- [${link.label}](${link.href.startsWith('/') ? url(link.href) : link.href})`), '');
       out.push('### Before you decide', '', g.decision, '');
       if (detail?.brief) out.push(detail.brief, '');
       if (g.sourceKeys?.length) out.push('Primary sources:', ...g.sourceKeys.map(k => `- [${buyerSources[k].label}](${buyerSources[k].url})`), '');
     }
   }
+  out.push('# Buyer decision tools', '', ...buyerTools.flatMap(tool=>[`## ${tool.title}`, `URL: ${url(tool.path)}`, tool.description, '']), '### Ownership calculator method', calculatorMethod, '', '### Building comparison method', comparisonMethodology, '');
+  for (const b of comparisonBuildings) out.push(`### Comparison: ${b.name}`, `Area grouping: ${b.zone}. Residence category: ${b.category}.`, ...(b.evidence?.facts??b.confirmed), `Stage evidence: ${b.evidence?.status??'Current delivery stage not verified'}`, b.evidence?`Additional source facts checked: ${b.evidence.checked}`:`Existing profile reviewed: ${b.profileReviewed}`, `Source: ${b.source.url}`, '');
   out.push('# Brickell building profiles', '');
   for (const b of buildings) {
     out.push(`## ${b.name}`, '', `URL: ${url(`/buildings/${b.slug}/`)}`, `Last reviewed: ${revisionDate(`/buildings/${b.slug}/`) ?? latestRevision()}`, `Area: ${b.area}. Profile: ${b.profile}.`, '', b.summary, '', '### What the project source says', '', ...b.confirmed.map(c => `- ${c}`), '', '### Questions to ask before buying', '', ...b.questions.map(q => `- ${q}`), '', `Official project source: [${b.source.label}](${b.source.url})`, 'Project materials do not verify current availability, price, view, association rules or service rights.', '');
