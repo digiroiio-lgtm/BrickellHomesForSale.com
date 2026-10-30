@@ -1,15 +1,15 @@
 {
   "/": {
-    "date": "2026-10-07",
-    "hash": "8761b94a0a98754eb53637d647a9e9b73cca86fcd5eb1682283dd6613ca813a0"
+    "date": "2026-10-30",
+    "hash": "b3866813b696d56c9b6da9f2bc97d1f94aa84aa3d286842f6b9feadcceb1e8f6"
   },
   "/buildings/": {
     "date": "2026-10-01",
     "hash": "0944cf0ebf55e04f2c244a0f9556604763afdc6b49f7dbcb0c42b7d36920fb9b"
   },
   "/buyer-guides/": {
-    "date": "2026-10-07",
-    "hash": "98c98669fccf77cfcfc34ab088e86da2814cc8b7e26246c650df22e48336a00c"
+    "date": "2026-10-30",
+    "hash": "39659818f126366366a2fe5d4b4b4499ebeb4281f5e65c83cd8f5e8666db18fd"
   },
   "/about/": {
     "date": "2026-09-28",
@@ -230,6 +230,10 @@
   "/ownership-costs/": {
     "date": "2026-09-28",
     "hash": "cbc3a3e02ceb9ea11181ef6e38f927df9fddd63d1c5924f5774e6479b3801744"
+  },
+  "/where-to-find-brickell-condos/": {
+    "date": "2026-10-30",
+    "hash": "19c29f8f6bcbc555cb2afb594b9ddbc14390641af9aab2fdfbcace2585b610a9"
   },
   "/buildings/reach-brickell-city-centre/": {
     "date": "2026-09-28",

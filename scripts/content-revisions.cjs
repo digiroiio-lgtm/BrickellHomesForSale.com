@@ -16,6 +16,7 @@ require.extensions['.ts'] = (module, filename) => {
   const source = fs.readFileSync(filename, 'utf8');
   module._compile(ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, filename);
 };
+const { searchGuide, searchFaqs } = require('../src/lib/search-guide.ts');
 const { guides } = require('../src/lib/content.ts');
 const { buildings } = require('../src/lib/buildings.ts');
 const { propertyTypeContent } = require('../src/lib/property-type-content.ts');
@@ -32,7 +33,7 @@ const pages = Object.fromEntries([
   ['/buyer-guides/', sha([fs.readFileSync(path.join(root, 'src/app/buyer-guides/page.tsx'), 'utf8'), guides.map(g => [g.slug, g.title, g.description])])],
   ...Object.entries(trust).map(([slug, value]) => [`/${slug}/`, sha(value)]),
   ['/privacy/', sha(fs.readFileSync(path.join(root, 'src/app/privacy/page.tsx'), 'utf8'))],
-  ...guides.map(g => [`/${g.slug}/`, sha([g, propertyTypeContent[g.slug], buyerGuideContent[g.slug], residentialDetail[g.slug], additionalDetails[g.slug], matrices[g.slug]])]),
+  ...guides.map(g => [`/${g.slug}/`, sha([g, propertyTypeContent[g.slug], buyerGuideContent[g.slug], residentialDetail[g.slug], additionalDetails[g.slug], matrices[g.slug], ...(g.slug === searchGuide.slug ? [searchFaqs] : [])])]),
   ...buildings.map(b => [`/buildings/${b.slug}/`, sha(b)])
 ]);
 let invalid = false;

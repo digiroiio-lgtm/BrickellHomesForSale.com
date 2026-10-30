@@ -68,3 +68,9 @@
 
 /* The diagram sits on a light panel even inside the dark band; keep its label readable (4.5:1). */
 .dark-band .diagram .eyebrow{color:var(--teal)}
+
+.search-faq { margin-top: 3rem; }
+.search-faq nav { padding: 1rem 1.5rem; border: 1px solid var(--line); }
+.search-faq section { padding: 1.5rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 6rem; }
+.search-faq h3 { font-size: 1.25rem; line-height: 1.5; }
+.search-faq a { text-decoration: underline; text-underline-offset: .2em; }
