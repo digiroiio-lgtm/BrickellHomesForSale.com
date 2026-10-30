@@ -71,8 +71,8 @@ export const searchFaqs: SearchFaq[] = [
   {
     id: 'under-750000',
     question: 'Where can I buy condos under $750,000 in Brickell, Miami?',
-    answer: 'Set an explicit $750,000 maximum in a current listing search and filter for the bedrooms, location and parking you need. Our under-$1M guide supplies the broader budget framework; it is not a list of units under $750,000. Keep closing costs and a contingency separate from the purchase ceiling. Check each candidate’s association charges, taxes, insurance and assessments before deciding it fits your budget. Availability below this threshold must be confirmed separately.',
-    links: [{ label: 'Budget search framework', href: '/brickell-condos-under-1m/' }, { label: 'Ownership costs', href: '/ownership-costs/' }]
+    answer: 'Set an explicit $750,000 maximum in a current listing search and filter for the bedrooms, location and parking you need. Our dedicated under-$750K guide separates purchase price, closing cash and monthly ownership costs; it does not list available units. Keep closing costs and a contingency separate from the purchase ceiling. Check each candidate’s association charges, taxes, insurance and assessments before deciding it fits your budget. Availability below this threshold must be confirmed separately.',
+    links: [{ label: 'Under-$750K buyer guide', href: '/brickell-condos-under-750k/' }, { label: 'Ownership costs', href: '/ownership-costs/' }]
   },
   {
     id: 'new-and-pre-construction',

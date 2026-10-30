@@ -1,3 +1,4 @@
+import { budget750Guide } from './budget-750';
 import { searchGuide } from './search-guide';
 import { residentialGuides } from './residential-content';
 export type Guide = {
@@ -52,6 +53,6 @@ const existingGuides: Guide[] = [
   { slug:'cash-vs-financing-brickell-condo', title:'Cash vs financing a Brickell condo', eyebrow:'Funding comparison', description:'Compare liquidity, cash to close, financing costs and project eligibility before choosing a funding path.', intent:'cash-vs-financing', budget:'any', type:'condo', lead:'Compare written numbers for your actual purchase rather than a general rate example.', checks:['For financing, compare Loan Estimates and total ownership cost.','For cash, preserve a reserve for closing, taxes, insurance and potential assessments.','Ask counsel and your closing agent about the contract and timing implications of each route.'], decision:'Cash can remove lender project review from a transaction, but it does not replace building due diligence or legal review.', sourceKeys:['cfpb','condo'] }
 ];
 
-export const guides: Guide[] = [...existingGuides, ...residentialGuides, searchGuide];
+export const guides: Guide[] = [...existingGuides, ...residentialGuides, searchGuide, budget750Guide];
 
 export const guideBySlug = Object.fromEntries(guides.map(g => [g.slug, g])) as Record<string, Guide>;

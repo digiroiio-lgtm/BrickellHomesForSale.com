@@ -18,6 +18,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run check:seo
+      - run: npm run check:tools
       - run: npm run build
       - run: npm run typecheck
       - name: Audit rendered pages

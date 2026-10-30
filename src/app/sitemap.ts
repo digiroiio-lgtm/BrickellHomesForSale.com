@@ -1,3 +1,4 @@
+import { buyerTools } from '@/lib/buyer-tools';
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
 import { guides } from '@/lib/content';
@@ -37,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (purchaseIntent.has(g.slug)) return entry(`/${g.slug}/`, date, 0.8, 'monthly');
       return entry(`/${g.slug}/`, date, 0.7, 'monthly');
     }),
+    ...buyerTools.map(tool=>entry(tool.path, contentRevisions[tool.path].date, 0.8, 'monthly')),
     entry('/buildings/', contentRevisions['/buildings/'].date, 0.75, 'monthly'),
     entry('/buyer-guides/', contentRevisions['/buyer-guides/'].date, 0.75, 'monthly'),
     ...buildings.map(b => entry(`/buildings/${b.slug}/`, contentRevisions[`/buildings/${b.slug}/`].date, 0.7, 'monthly')),

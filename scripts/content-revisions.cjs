@@ -16,6 +16,9 @@ require.extensions['.ts'] = (module, filename) => {
   const source = fs.readFileSync(filename, 'utf8');
   module._compile(ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, filename);
 };
+const { buyerTools } = require('../src/lib/buyer-tools.ts');
+const { comparisonBuildings, comparisonMethodology } = require('../src/lib/building-comparison.ts');
+const { budget750Faqs } = require('../src/lib/budget-750.ts');
 const { searchGuide, searchFaqs } = require('../src/lib/search-guide.ts');
 const { guides } = require('../src/lib/content.ts');
 const { buildings } = require('../src/lib/buildings.ts');
@@ -32,8 +35,9 @@ const pages = Object.fromEntries([
   ['/buildings/', sha([fs.readFileSync(path.join(root, 'src/app/buildings/page.tsx'), 'utf8'), buildings.map(b => [b.slug, b.name, b.summary])])],
   ['/buyer-guides/', sha([fs.readFileSync(path.join(root, 'src/app/buyer-guides/page.tsx'), 'utf8'), guides.map(g => [g.slug, g.title, g.description])])],
   ...Object.entries(trust).map(([slug, value]) => [`/${slug}/`, sha(value)]),
+  ...buyerTools.map(tool=>[tool.path, sha([tool, fs.readFileSync(path.join(root, 'src/app', tool.path, 'page.tsx'), 'utf8'), ...(tool.path.includes('compare-') ? [comparisonBuildings.map(b=>({...b,profileReviewed:undefined})), comparisonMethodology, fs.readFileSync(path.join(root, 'src/components/BuildingComparison.tsx'), 'utf8')] : [fs.readFileSync(path.join(root, 'src/components/OwnershipCalculator.tsx'), 'utf8'),fs.readFileSync(path.join(root, 'src/lib/ownership-calculator.ts'), 'utf8'),fs.readFileSync(path.join(root, 'src/lib/buyer-tools.ts'), 'utf8')])])]),
   ['/privacy/', sha(fs.readFileSync(path.join(root, 'src/app/privacy/page.tsx'), 'utf8'))],
-  ...guides.map(g => [`/${g.slug}/`, sha([g, propertyTypeContent[g.slug], buyerGuideContent[g.slug], residentialDetail[g.slug], additionalDetails[g.slug], matrices[g.slug], ...(g.slug === searchGuide.slug ? [searchFaqs] : [])])]),
+  ...guides.map(g => [`/${g.slug}/`, sha([g, propertyTypeContent[g.slug], buyerGuideContent[g.slug], residentialDetail[g.slug], additionalDetails[g.slug], matrices[g.slug], ...(g.slug === searchGuide.slug ? [searchFaqs] : g.slug === 'brickell-condos-under-750k' ? [budget750Faqs] : [])])]),
   ...buildings.map(b => [`/buildings/${b.slug}/`, sha(b)])
 ]);
 let invalid = false;
