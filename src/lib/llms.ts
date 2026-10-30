@@ -1,3 +1,4 @@
+import { searchGuide, searchFaqs } from './search-guide';
 import { guides, guideBySlug } from './content';
 import { buildings } from './buildings';
 import { buyerSources, site } from './site';
@@ -66,6 +67,7 @@ export function llmsFullTxt(): string {
       if (matrix) {
         out.push(`### ${matrix.heading}`, '', matrix.intro, '', '| Compare | Ask for | Why it matters |', '| --- | --- | --- |', ...matrix.rows.map(r => `| ${r.map(cell => cell.replace(/\|/g, '/')).join(' | ')} |`), '');
       }
+      if (slug === searchGuide.slug) for (const faq of searchFaqs) out.push(`### ${faq.question}`, '', faq.answer, '', ...faq.links.map(link => `- [${link.label}](${link.href.startsWith('/') ? url(link.href) : link.href})`), '');
       out.push('### Before you decide', '', g.decision, '');
       if (detail?.brief) out.push(detail.brief, '');
       if (g.sourceKeys?.length) out.push('Primary sources:', ...g.sourceKeys.map(k => `- [${buyerSources[k].label}](${buyerSources[k].url})`), '');

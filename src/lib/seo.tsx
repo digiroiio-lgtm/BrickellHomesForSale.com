@@ -100,7 +100,8 @@ type SourceKey = keyof typeof buyerSources;
 
 /**
  * One JSON-LD graph per page: WebPage (+ Article for guides, CollectionPage + ItemList for indexes) and its BreadcrumbList.
- * Deliberately no Offer, RealEstateListing, RealEstateAgent or FAQPage while the site is MLS-free and operator-anonymous.
+ * Deliberately no Offer, RealEstateListing, RealEstateAgent while the site is MLS-free and operator-anonymous.
+ * FAQPage is used only for visible editorial questions and their matching answers.
  */
 export function pageGraph(input: {
   path: string;
@@ -110,6 +111,7 @@ export function pageGraph(input: {
   kind?: 'article' | 'collection' | 'page' | 'about';
   items?: Crumb[];
   sourceKeys?: SourceKey[];
+  faqs?: { id: string; question: string; answer: string }[];
 }) {
   const url = abs(input.path);
   const kind = input.kind ?? 'page';
@@ -117,7 +119,7 @@ export function pageGraph(input: {
   const webPageType = kind === 'collection' ? 'CollectionPage' : kind === 'about' ? 'AboutPage' : 'WebPage';
   const graph: Record<string, unknown>[] = [
     {
-      '@type': webPageType,
+      '@type': input.faqs?.length ? [webPageType, 'FAQPage'] : webPageType,
       '@id': `${url}#webpage`,
       url,
       name: input.name,
@@ -126,6 +128,7 @@ export function pageGraph(input: {
       isPartOf: { '@id': websiteId },
       ...(input.trail && input.trail.length > 1 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
       ...(modified ? { dateModified: modified } : {}),
+      ...(input.faqs?.length ? { mainEntity: input.faqs.map(faq => ({ '@type': 'Question', '@id': `${url}#${faq.id}`, name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) } : {}),
       ...(kind === 'collection' && input.items ? { mainEntity: { '@id': `${url}#list` } } : {})
     },
     ...(input.trail && input.trail.length > 1 ? [breadcrumbNode(input.trail, `${url}#breadcrumb`)] : [])

@@ -6,6 +6,16 @@ export const buyerGuideContent: Record<string, {
   brief: string;
   related: { label: string; href: string }[];
 }> = {
+  'where-to-find-brickell-condos': {
+    headline: 'Give each source a clear job in your search.',
+    intro: 'A listing portal helps identify advertised units. A licensed representative can check status and arrange a viewing. Building research helps you assess the obligations behind those units. Use all three with the same address, budget and intended use so a broad search becomes a practical shortlist.',
+    sections: [
+      { heading: 'Compare search tools on the same criteria', text: 'Use the same geographic boundary, condo filter, budget and listing status. Note each source and update time. A larger result count can reflect duplicate units or a different boundary rather than better coverage.', checks: ['Separate mainland Brickell, Brickell Key and nearby Downtown results.', 'Deduplicate by building address and unit number.', 'Confirm listing status before relying on a result.'] },
+      { heading: 'Match a shortlist to the documents', text: 'For every unit, pair the advertised price and features with a current association budget, written rules and any inspection, reserve or assessment information applicable to the building. Current records resolve questions a neighborhood guide cannot.', checks: ['Use current written records for fees and rental permissions.', 'Compare a total ownership budget alongside the purchase price.', 'Have independent professionals review legal, financing and insurance questions.'] }
+    ],
+    brief: 'Share your exact price ceiling, bedroom needs, preferred area and purchase timing to frame a focused inquiry.',
+    related: [{ label: 'Condo search starting point', href: '/condos-for-sale/' }, { label: 'Building profiles', href: '/buildings/' }, { label: 'HOA fees and assessments', href: '/hoa-fees/' }]
+  },
   'brickell-condo-closing-process': {
     headline: 'Build the closing calendar around actual deliverables.',
     intro: 'A Brickell condo closing involves a unit, an association and often a lender. The contract controls the dates; the association and financing teams supply information that can change whether those dates are realistic. Establish who orders each item and when it must arrive.',
