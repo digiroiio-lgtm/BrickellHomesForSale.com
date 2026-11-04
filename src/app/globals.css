@@ -74,3 +74,12 @@
 .search-faq section { padding: 1.5rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 6rem; }
 .search-faq h3 { font-size: 1.25rem; line-height: 1.5; }
 .search-faq a { text-decoration: underline; text-underline-offset: .2em; }
+
+.buyer-checklist{max-width:75ch;padding-inline-start:1.5rem;line-height:1.7}
+.buyer-checklist li+li{margin-top:.85rem}
+.buyer-answers{display:grid;gap:1.5rem;max-width:75ch}
+.buyer-answers h3{margin:0 0 .45rem}
+.buyer-answers p{margin:0;line-height:1.7}
+.buyer-answers blockquote{margin:1rem 0 0;padding-inline-start:1rem;border-inline-start:3px solid var(--teal)}
+.buyer-answers figcaption{margin-top:.5rem;font-size:.9rem}
+.buyer-answers figure{margin:0}
