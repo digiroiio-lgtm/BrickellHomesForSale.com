@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { guides, guideBySlug } from '@/lib/content';
 import { buyerSources, site } from '@/lib/site';
+import { seoOverrides } from '@/lib/seo-overrides';
 import { metadataFor, pageGraph, richDescription, StructuredData } from '@/lib/seo';
 import { InquiryForm } from '@/components/InquiryForm';
 import { Diagram } from '@/components/Diagrams';
@@ -17,7 +18,7 @@ import { Breadcrumb, ReviewedBy } from '@/components/PageMeta';
 
 export function generateStaticParams(){return guides.map(g=>({slug:g.slug}));}
 export const dynamicParams=false;
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const g=guideBySlug[slug];return g?metadataFor(`/${slug}/`,g.title,richDescription(g.description,['Independent Brickell buyer guide; no MLS listings or prices shown.','Independent Brickell buyer guide; no MLS listings.','No MLS listings or prices shown.']),{article:true,image:`/${slug}/opengraph-image/`}):{};}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const g=guideBySlug[slug];const o=seoOverrides[`/${slug}/`];return g?metadataFor(`/${slug}/`,o?.title??g.title,o?o.description:richDescription(g.description,['Independent Brickell buyer guide; no MLS listings or prices shown.','Independent Brickell buyer guide; no MLS listings.','No MLS listings or prices shown.']),{article:true,image:`/${slug}/opengraph-image/`}):{};}
 
 export default async function GuidePage({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;const g=guideBySlug[slug];if(!g)notFound();
