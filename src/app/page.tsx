@@ -4,12 +4,13 @@ import { InquiryForm } from '@/components/InquiryForm';
 import { Diagram } from '@/components/Diagrams';
 import { buildings } from '@/lib/buildings';
 import { guides } from '@/lib/content';
+import { seoOverrides } from '@/lib/seo-overrides';
 import { metadataFor, pageGraph } from '@/lib/seo';
 import { HeadStructuredData } from '@/components/HeadStructuredData';
 import { ReviewedBy } from '@/components/PageMeta';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = metadataFor('/', 'Brickell homes for sale | Residential buyer intelligence', site.description);
+export const metadata: Metadata = metadataFor('/', seoOverrides['/'].title, seoOverrides['/'].description);
 const propertyTypes = [
   {label:'Condos',slug:'condos-for-sale',caption:'Compare units, buildings and ownership documents.'},
   {label:'Waterfront residences',slug:'waterfront-condos',caption:'Verify the view, frontage and exposure.'},
