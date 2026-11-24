@@ -84,3 +84,7 @@
 .buyer-answers blockquote{margin:1rem 0 0;padding-inline-start:1rem;border-inline-start:3px solid var(--teal)}
 .buyer-answers figcaption{margin-top:.5rem;font-size:.9rem}
 .buyer-answers figure{margin:0}
+
+@media(min-width:901px){.footer-grid{grid-template-columns:repeat(6,1fr);gap:35px 28px}.footer-grid>div:first-child{grid-column:1/-1}}
+.next-steps{padding:46px 0 10px}.next-steps h2{margin:6px 0 24px}.next-steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.next-steps-grid h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}.next-steps-grid a{display:block;padding:12px 0;border-top:1px solid var(--line)}.next-steps-grid a strong{display:block;font-size:15px;line-height:1.35}.next-steps-grid a span:not([aria-hidden]){display:block;margin-top:6px;font-size:13px;line-height:1.5;color:var(--muted)}.next-steps-grid a:hover strong{color:var(--teal)}
+@media(max-width:900px){.next-steps-grid{grid-template-columns:1fr}}

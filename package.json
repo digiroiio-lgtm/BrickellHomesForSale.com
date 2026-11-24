@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "check:revisions": "node scripts/content-revisions.cjs",
     "check:seo": "node scripts/check-seo.cjs",
-    "check:indexing": "node scripts/check-indexing.cjs"
+    "check:indexing": "node scripts/check-indexing.cjs",
+    "check:links": "node scripts/check-links.cjs"
   },
   "dependencies": {
     "next": "^15.5.0",

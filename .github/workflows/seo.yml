@@ -30,3 +30,4 @@ jobs:
             sleep 1
           done
           npm run check:indexing
+          npm run check:links
